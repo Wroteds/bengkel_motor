@@ -12,7 +12,7 @@
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- My style -->
-    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/tampilan_awal.css" />
   </head>
   <body>
     <!-- Navbar start -->
