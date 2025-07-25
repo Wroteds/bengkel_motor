@@ -16,7 +16,7 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My style -->
-    <link rel="stylesheet" href="css/tampilan.css" />
+    <link rel="stylesheet" href="css/tampilan_awal.css" />
   </head>
   <body>
     <!-- Navbar start -->
@@ -32,7 +32,8 @@
       </div>
 
       <div class="login">
-        <a href="">Login</a>
+        <a href="/login">Login</a>
+
       </div>
 
       <div class="navbar-extra">
