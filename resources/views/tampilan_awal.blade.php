@@ -179,7 +179,7 @@
         <a href="#layanan">Layanan</a>
         <a href="#about">Tentang Kami</a>
         <a href="#jam-operasional">Jam</a>
-        <a href="contact">Kontak</a>
+        <a href="#contact">Kontak</a>
       </div>
 
       <div class="credit">
