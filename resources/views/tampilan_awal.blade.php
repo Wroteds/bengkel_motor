@@ -194,6 +194,6 @@
     </script>
 
     <!-- My javascript -->
-    <script src="js/tampilan.js"></script>
+    <script src="js/tampilan_awal.js"></script>
   </body>
 </html>
