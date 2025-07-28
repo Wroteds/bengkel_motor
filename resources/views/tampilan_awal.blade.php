@@ -176,7 +176,7 @@
 
       <div class="link">
         <a href="#home">home</a>
-        <a href="layanan">Layanan</a>
+        <a href="#layanan">Layanan</a>
         <a href="#about">Tentang Kami</a>
         <a href="#jam-operasional">Jam</a>
         <a href="contact">Kontak</a>
