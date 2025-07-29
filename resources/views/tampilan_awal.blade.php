@@ -17,10 +17,12 @@
 
     <!-- My style -->
     <link rel="stylesheet" href="css/tampilan_awal.css" />
+    <link rel="stylesheet" href="aos/aos.css" />
+
   </head>
   <body>
     <!-- Navbar start -->
-    <nav class="navbar">
+    <nav class="navbar" data-aos="fade-up">
       <a href="#" class="navbar-logo">Bengkel Ngawi <span>Motor</span></a>
 
       <div class="navbar-nav">
@@ -45,7 +47,6 @@
     @else
         <a href="{{ route('login') }}">Login</a>
     @endauth
-      </div>
 
       <div class="navbar-extra">
         <a href="#" id="hamburger"><i data-feather="menu"></i></a>
@@ -54,7 +55,7 @@
     <!-- Navbar end -->
 
     <!-- Hero section start -->
-    <section class="hero" id="home">
+      <section class="hero" id="home" data-aos="zoom-in-down">
       <main class="content">
         <h1>Selamat Datang DiBengkel Otomotif</h1>
         <h1></h1>
@@ -69,9 +70,9 @@
 
     <!-- layanan -->
     <section id="layanan" class="layanan">
-      <h2>Layanan Servis</h2>
+      <h2 data-aos="zoom-in">Layanan Servis</h2>
 
-      <div class="row">
+      <div class="row" data-aos="zoom-out-up">
         <div class="layanan-card">
           <img
             src="img/WhatsApp Image 2025-07-17 at 13.31.03_cbc95bf7.jpg"
@@ -114,17 +115,18 @@
 
     <!-- tentang kami -->
     <section id="about" class="about">
-      <h2>Tentang Kami</h2>
+      <h2 data-aos="zoom-in">Tentang Kami</h2>
       <div class="row">
         <div class="about-img">
           <img
             src="img/WhatsApp Image 2025-07-17 at 13.31.02_33093d44.jpg"
             alt="Tentang Kami"
+            data-aos="fade-up-right"
           />
         </div>
         <div class="content">
-          <h3>Servis Cvt</h3>
-          <p>
+          <h3 data-aos="fade-up-left">Servis Cvt</h3>
+          <p data-aos="fade-up-left">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
             nulla sunt eligendi consectetur nam minima, quibusdam harum. Magni a
             maxime voluptatem, eos sequi hic unde, nostrum animi aperiam
@@ -187,10 +189,10 @@
 
       <div class="link">
         <a href="#home">home</a>
-        <a href="#layanan">Layanan</a>
+        <a href="layanan">Layanan</a>
         <a href="#about">Tentang Kami</a>
         <a href="#jam-operasional">Jam</a>
-        <a href="#contact">Kontak</a>
+        <a href="contact">Kontak</a>
       </div>
 
       <div class="credit">
@@ -206,5 +208,11 @@
 
     <!-- My javascript -->
     <script src="js/tampilan_awal.js"></script>
+    <script src="aos/aos.js"></script>
+    <script>
+      AOS.init ({
+        once: false
+      });
+    </script>
   </body>
 </html>
