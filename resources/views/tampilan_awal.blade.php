@@ -32,8 +32,19 @@
       </div>
 
       <div class="login">
-        <a href="/login">Login</a>
-
+       @auth
+        @if(Auth::user()->isAdmin())
+            <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
+        @else
+            <a href="{{ route('user.dashboard') }}">Dashboard User</a>
+        @endif
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-size: 1rem; padding: 0;">Logout</button>
+        </form>
+    @else
+        <a href="{{ route('login') }}">Login</a>
+    @endauth
       </div>
 
       <div class="navbar-extra">
