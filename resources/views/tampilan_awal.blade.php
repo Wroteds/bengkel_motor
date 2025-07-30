@@ -18,6 +18,7 @@
     <!-- My style -->
     <link rel="stylesheet" href="css/tampilan_awal.css" />
     <link rel="stylesheet" href="aos/aos.css" />
+    <link rel="stylesheet" href="css/login" />
 
   </head>
   <body>
@@ -198,6 +199,8 @@
     <!-- My javascript -->
     <script src="js/tampilan_awal.js"></script>
     <script src="aos/aos.js"></script>
+     <script src="js/login"></script>
+
     <script>
       AOS.init ({
         once: false
