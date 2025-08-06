@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halaman Register</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}"> </head>
+    <title>Register</title>
+</head>
 <body>
-    <div class="login-container">
-        <h2>Register</h2>
-        <form id="registerForm" method="POST" action="/register">
-            @csrf
-            <div class="input-group">
-                <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="name" value="{{ old('name') }}" required autofocus />
-                @error('name')
-                    <span class="error-message">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{ old('email') }}" required />
-                @error('email')
-                    <span class="error-message">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required />
-                @error('password')
-                    <span class="error-message">{{ $message }}</span>
-                @enderror
-            </div>
-            <div class="input-group">
-                <label for="password_confirmation">Konfirmasi Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" required />
-            </div>
+    <h2>Register</h2>
+
+    @if ($errors->any())
+        <div style="color: red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
+
+        <div>
+            <label>Nama:</label>
+            <input type="text" name="name" value="{{ old('name') }}" required>
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ old('email') }}" required>
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <div>
+            <label>Konfirmasi Password:</label>
+            <input type="password" name="password_confirmation" required>
+        </div>
+
+        <div>
             <button type="submit">Register</button>
-            <p>Sudah punya akun? <a href="{{ route('login') }}">Login di sini</a></p>
-        </form>
-    </div>
+        </div>
+
+        <p>Sudah punya akun? <a href="{{ route('login') }}">Login di sini</a></p>
+    </form>
 </body>
 </html>

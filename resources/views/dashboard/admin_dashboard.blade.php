@@ -3,13 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}"> {{-- Penting agar @csrf bekerja --}}
     <title>Dashboard Admin</title>
     <style>
-        body { font-family: sans-serif; margin: 20px; background-color: #e6ffe6; }
-        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 900px; margin: auto; border: 1px solid #28a745; }
-        h1 { color: #28a745; }
-        p { color: #333; }
-        .logout-form { margin-top: 20px; }
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color: #e6ffe6;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: auto;
+            border: 1px solid #28a745;
+        }
+
+        h1 {
+            color: #28a745;
+        }
+
+        p {
+            color: #333;
+        }
+
+        .logout-form {
+            margin-top: 20px;
+        }
+
         .logout-form button {
             padding: 10px 15px;
             background-color: #dc3545;
@@ -18,6 +42,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .logout-form button:hover {
             background-color: #c82333;
         }

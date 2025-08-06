@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController; // Kita akan membuat ini nanti
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,20 +25,19 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout'); // Gunakan POST untuk logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// --- Rute Dashboard (Membutuhkan Autentikasi) ---
+// --- Dashboard Routes ---
 Route::middleware(['auth'])->group(function () {
-    // Rute untuk dashboard user
-    Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
 
-    // Rute untuk dashboard admin (membutuhkan middleware 'admin')
-    Route::middleware(['admin'])->group(function () {
-    Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
+    // User dashboard
+    Route::middleware('role:user')->get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
 
-    Route::get('/dashboard', function () {
-        return view('tampilan_awal'); // file tampilan_awal.blade.php
-        })->middleware('auth');
-
-    });
+    // Admin dashboard
+    Route::middleware('role:admin')->get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
+});
+// -- Riwayat servis --
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/riwayat-servis', [\App\Http\Controllers\Admin\RiwayatServisController::class, 'index'])->name('admin.riwayat.index');
+    Route::post('/riwayat-servis', [\App\Http\Controllers\Admin\RiwayatServisController::class, 'store'])->name('admin.riwayat.store');
 });

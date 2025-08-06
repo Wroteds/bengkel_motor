@@ -1,40 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Halaman Login</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <title>Login</title>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form id="loginForm" method="POST" action="{{ route('login') }}">
-            @csrf
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
-                <p id="errorMessage" class="error-message">
-                      @error('email')
-                      {{ $message }}
-                      @enderror
-                      @error('password')
-                      {{ $message }}
-                      @enderror
-                      {{ session('error') }} {{-- Tambahkan ini juga jika ada error umum dari controller --}}
-                </p>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required />
-                @error('password')
-                    <p class="error-message">{{ $message }}</p>
-                @enderror
-            </div>
+    <h2>Login</h2>
+
+    @if ($errors->any())
+        <div style="color: red;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" value="{{ old('email') }}" required autofocus>
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <div>
             <button type="submit">Login</button>
-            <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
-        </form>
-    </div>
-<script src="{{ asset('js/login.js') }}"></script>
+        </div>
+
+        <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
+    </form>
 </body>
 </html>
