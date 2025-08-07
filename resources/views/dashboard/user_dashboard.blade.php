@@ -13,32 +13,57 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Halo, {{ $user->name }}!</h1>
-        <p>Berikut riwayat servis Anda:</p>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Tanggal Servis</th>
-                    <th>Jenis Servis</th>
-                    <th>Keterangan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($riwayatServis as $servis)
-                    <tr>
-                        <td>{{ $servis->tanggal_servis }}</td>
-                        <td>{{ $servis->jenis_servis }}</td>
-                        <td>{{ $servis->keterangan }}</td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">Belum ada riwayat servis.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
+@section('content')
+<div class="container mt-4">
+    <div class="text-center mb-4">
+        <h2>Selamat Datang, {{ $user->name }}</h2>
+        <p class="text-muted">Dashboard Pengguna</p>
     </div>
+
+    <div class="d-grid gap-2 mb-4">
+        <a 
+            href="https://api.whatsapp.com/send?phone=6287887611225&text=gw%20ganteng" 
+            target="_blank"
+            class="btn btn-success btn-lg"
+        >
+            Booking Servis via WhatsApp
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            Riwayat Servis Anda
+        </div>
+        <div class="card-body">
+            @if($riwayatServis->isEmpty())
+                <p class="text-muted">Belum ada riwayat servis yang tercatat.</p>
+            @else
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama Servis</th>
+                                <th>Deskripsi</th>
+                                <th>Tanggal Servis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($riwayatServis as $index => $riwayat)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $riwayat->nama_servis }}</td>
+                                    <td>{{ $riwayat->deskripsi }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($riwayat->tanggal_servis)->format('d M Y') }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
+        </div>
+    </div>
+</div>
 </body>
 </html>

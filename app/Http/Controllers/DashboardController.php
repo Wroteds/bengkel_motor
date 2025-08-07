@@ -10,9 +10,10 @@ class DashboardController extends Controller
     public function userDashboard()
     {
         $user = auth()->user();
-        $riwayatservis = $user->riwayatServis()->latest()->get();
+         $riwayatServis = $user->riwayatServis()->latest()->get();
 
-        return view('dashboard_user', compact('user', 'riwayatservis'));
+        return view('dashboard.user_dashboard', compact('user', 'riwayatServis'));
+
     }
 
     public function adminDashboard()
