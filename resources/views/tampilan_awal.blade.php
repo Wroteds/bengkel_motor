@@ -34,20 +34,22 @@
         <a href="#contact">Kontak</a>
       </div>
 
-      <div class="login">
-       @auth
-        @if(Auth::user()->isAdmin())
-            <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
-        @else
-            <a href="{{ route('user.dashboard') }}">Dashboard User</a>
-        @endif
-        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-            @csrf
-            <button type="submit" style="background: none; border: none; color: white; cursor: pointer; font-size: 1rem; padding: 0;">Logout</button>
-        </form>
+     <div class="login">
+      @auth
+    @if(Auth::user()->isAdmin())
+        <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
     @else
-        <a href="{{ route('login') }}">Login</a>
-    @endauth
+        <a href="{{ route('user.dashboard') }}">Dashboard User</a>
+    @endif
+
+    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
+@else
+    <a href="{{ route('login') }}">Login</a>
+@endauth
+</div>
 
       <div class="navbar-extra">
         <a href="#" id="hamburger"><i data-feather="menu"></i></a>
@@ -102,13 +104,13 @@
           <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
-          <img src="img/images.jpg" alt="Servis Cvt" class="layanan-card-img" />
-          <h3 class="layanan-card-title">Servis Cvt</h3>
+          <img src="img/WhatsApp Image 2025-08-06 at 13.34.29_6ff848e7.jpg" alt="Kelistrikan" class="layanan-card-img" />
+          <h3 class="layanan-card-title">Kelistrikan</h3>
           <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
-          <img src="img/images.jpg" alt="Servis Cvt" class="layanan-card-img" />
-          <h3 class="layanan-card-title">Servis Cvt</h3>
+          <img src="img/WhatsApp Image 2025-08-06 at 13.34.29_648db57d.jpg" alt="Repaint" class="layanan-card-img" />
+          <h3 class="layanan-card-title">Repaint</h3>
           <p class="layanan-card-price">IDR 50K</p>
         </div>
       </div>
@@ -122,12 +124,12 @@
           <img
             src="img/WhatsApp Image 2025-07-17 at 13.31.02_33093d44.jpg"
             alt="Tentang Kami"
-            data-aos="fade-up-right"
+            data-aos="fade-up"
           />
         </div>
-        <div class="content">
-          <h3 data-aos="fade-up-left">Servis Cvt</h3>
-          <p data-aos="fade-up-left">
+        <div class="content" data-aos="fade-up">
+          <h3>Servis Cvt</h3>
+          <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
             nulla sunt eligendi consectetur nam minima, quibusdam harum. Magni a
             maxime voluptatem, eos sequi hic unde, nostrum animi aperiam
@@ -165,15 +167,15 @@
         <form action="">
           <div class="input-group">
             <i data-feather="user"></i>
-            <input type="text" placeholder="nama" />
+            <input type="text" placeholder="Nama" />
           </div>
           <div class="input-group">
             <i data-feather="mail"></i>
-            <input type="text" placeholder="email" />
+            <input type="text" placeholder="Email" />
           </div>
           <div class="input-group">
-            <i data-feather="phone"></i>
-            <input type="text" placeholder="no hp" />
+            <i data-feather="message-square"></i>
+            <input type="text" placeholder="Pesan" />
           </div>
           <button type="submit" class="btn">Kirim Pesan</button>
         </form>
@@ -201,6 +203,14 @@
         . | &Bengkel; 2025.</p>
       </div>
      </footer>
+
+     <!-- Tombol WhatsApp Mengambang -->
+     <a href="https://wa.me/6282134493486?text=Assalamu%20alaikum%20saya%20ingin%20bertanya%20tentang%20travel%20umrah"
+        class="floating-whatsapp"
+        target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon">
+        <span class="wa-text">Hubungi Kami</span>
+     </a>
 
     <!-- feather icons -->
     <script>
