@@ -1,0 +1,52 @@
+/* public/css/admin.css */
+
+/* Styling umum */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+}
+
+/* Card */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.01);
+}
+
+/* Header */
+.card-header {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Button */
+.btn {
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+.btn-primary:hover {
+    background-color: #0d6efdcc;
+}
+.btn-danger:hover {
+    background-color: #dc3545cc;
+}
+
+/* List group */
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Form label */
+.form-label {
+    font-weight: 500;
+}
+
+/* Alert */
+.alert {
+    border-radius: 8px;
+}

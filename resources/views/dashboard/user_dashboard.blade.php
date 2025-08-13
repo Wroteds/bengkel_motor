@@ -61,6 +61,10 @@
                         </tbody>
                     </table>
                 </div>
+                   <form action="{{ route('logout') }}" method="POST" class="mt-3">
+            @csrf
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
             @endif
         </div>
     </div>

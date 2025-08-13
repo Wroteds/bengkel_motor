@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController; // Kita akan membuat ini nanti
 use App\Models\User;
+use App\Http\Controllers\Admin\RiwayatServisController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,4 +41,18 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/riwayat-servis', [\App\Http\Controllers\Admin\RiwayatServisController::class, 'index'])->name('admin.riwayat.index');
     Route::post('/riwayat-servis', [\App\Http\Controllers\Admin\RiwayatServisController::class, 'store'])->name('admin.riwayat.store');
+});
+
+
+// route admin
+// routes/web.php
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+    Route::get('/admin/riwayat', [RiwayatServisController::class, 'index'])->name('admin.riwayat.index');
+    Route::post('/admin/riwayat', [RiwayatServisController::class, 'store'])->name('admin.riwayat.store');
+    Route::get('/admin/riwayat/{id}/edit', [RiwayatServisController::class, 'edit'])->name('admin.riwayat.edit');
+    Route::put('/admin/riwayat/{id}', [RiwayatServisController::class, 'update'])->name('admin.riwayat.update');
+    Route::post('/admin/riwayat-servis', [RiwayatServisController::class, 'store'])
+    ->name('admin.riwayat.store');
+    route::delete('/admin/riwayat/{id}', [\App\Http\Controllers\Admin\RiwayatServisController::class, 'hapus'])
+    ->name('admin.riwayat.hapus');
 });

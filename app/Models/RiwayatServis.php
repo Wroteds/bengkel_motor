@@ -19,9 +19,6 @@ class RiwayatServis extends Model
         'tanggal_servis',
     ];
 
-    /**
-     * Relasi ke model User (riwayat servis milik satu user)
-     */
     public function user()
     {
         return $this->belongsTo(User::class);

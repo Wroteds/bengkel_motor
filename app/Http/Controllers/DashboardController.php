@@ -18,6 +18,7 @@ class DashboardController extends Controller
 
     public function adminDashboard()
     {
-        return view('dashboard.admin_dashboard');
+         $users = User::all();
+        return view('dashboard.admin_dashboard', compact('users'));
     }
 }

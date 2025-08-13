@@ -46,7 +46,7 @@ class User extends Authenticatable
     }
     public function riwayatServis()
 {
-    return $this->hasMany(\App\Models\RiwayatServis::class);
+    return $this->hasMany(RiwayatServis::class, 'user_id');
 }
 
 }
