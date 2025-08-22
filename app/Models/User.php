@@ -19,7 +19,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'role',          
+        'profile_photo',
     ];
 
     /**
@@ -44,9 +45,12 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
-    public function riwayatServis()
-{
-    return $this->hasMany(RiwayatServis::class, 'user_id');
-}
 
+    /**
+     * Relasi ke tabel riwayat servis
+     */
+    public function riwayatServis()
+    {
+        return $this->hasMany(RiwayatServis::class, 'user_id');
+    }
 }

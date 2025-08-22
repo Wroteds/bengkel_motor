@@ -1,0 +1,74 @@
+.riwayat-container {
+    padding: 20px;
+    min-height: 100vh;
+    background: #f4f6f9;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.empty-state {
+    text-align: center;
+    color: #777;
+}
+.empty-state img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.riwayat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.riwayat-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.riwayat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.riwayat-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.riwayat-date {
+    color: #555;
+    font-weight: 500;
+}
+
+.riwayat-status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+/* warna status */
+.riwayat-status.selesai {
+    background: #2ecc71;
+    color: #fff;
+}
+.riwayat-status.proses {
+    background: #f39c12;
+    color: #fff;
+}
+.riwayat-status.batal {
+    background: #e74c3c;
+    color: #fff;
+}

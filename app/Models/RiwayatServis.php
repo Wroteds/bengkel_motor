@@ -7,20 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class RiwayatServis extends Model
 {
-    use HasFactory;
 
-    /**
-     * Kolom yang boleh diisi (fillable)
-     */
-    protected $fillable = [
-        'user_id',
-        'nama_servis',
-        'deskripsi',
-        'tanggal_servis',
+    protected $table = 'riwayat_servis';
+
+    protected $dates = ['tanggal_servis']; 
+    // atau untuk Laravel versi baru:
+    protected $casts = [
+        'tanggal_servis' => 'datetime',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 }

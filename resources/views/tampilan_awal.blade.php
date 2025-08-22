@@ -36,11 +36,11 @@
 
      <div class="login">
       @auth
-    @if(Auth::user()->isAdmin())
-        <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
-    @else
-        <a href="{{ route('user.dashboard') }}">Dashboard User</a>
-    @endif
+         @if(Auth::user()->isAdmin())
+            <a href="{{ route('admin.bookings.index') }}">Dashboard Admin</a>
+         @else
+            <a href="{{ route('user.dashboard') }}">Dashboard User</a>
+       @endif
 
     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
         @csrf

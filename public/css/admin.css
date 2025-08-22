@@ -1,52 +1,108 @@
-/* public/css/admin.css */
-
-/* Styling umum */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
-}
-
-/* Card */
-.card {
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease-in-out;
-}
-.card:hover {
-    transform: scale(1.01);
-}
-
-/* Header */
-.card-header {
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-/* Button */
-.btn {
-    border-radius: 6px;
-    transition: background-color 0.2s ease-in-out;
-}
-.btn-primary:hover {
-    background-color: #0d6efdcc;
-}
-.btn-danger:hover {
-    background-color: #dc3545cc;
-}
-
-/* List group */
-.list-group-item {
+/* Layout */
+.admin-dashboard {
     display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+/* Konten utama di kiri */
+.content {
+    flex: 1;
+    padding: 20px;
+    background: #f8fafc;
+}
+
+/* Sidebar kanan */
+.sidebar {
+    width: 220px;
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
 }
 
-/* Form label */
-.form-label {
-    font-weight: 500;
+.sidebar .logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+}
+.sidebar .menu li {
+    margin: 10px 0;
+}
+.sidebar .menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    border-radius: 6px;
+}
+.sidebar .menu a:hover,
+.sidebar .menu a.active {
+    background: #334155;
+}
+.logout-btn {
+    background: #dc2626;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    margin-top: 20px;
+}
+.logout-btn:hover {
+    background: #b91c1c;
 }
 
-/* Alert */
-.alert {
-    border-radius: 8px;
+/* Responsif untuk HP */
+@media (max-width: 768px) {
+    .admin-dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sidebar .menu {
+        display: flex;
+        gap: 10px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .table {
+        font-size: 13px;
+    }
+    .table thead {
+        display: none;
+    }
+    .table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 10px;
+        background: #fff;
+    }
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px;
+    }
+    .table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #334155;
+    }
 }
