@@ -30,8 +30,7 @@
         <a href="#home">Home</a>
         <a href="#layanan">Layanan</a>
         <a href="#about">Tentang Kami</a>
-        <a href="#jam-operasional">Jam</a>
-        <a href="#contact">Kontak</a>
+        <a href="#contact">Alamat</a>
       </div>
 
      <div class="login">
@@ -42,10 +41,7 @@
             <a href="{{ route('user.dashboard') }}">Dashboard User</a>
        @endif
 
-    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
+
 @else
     <a href="{{ route('login') }}">Login</a>
 @endauth
@@ -125,9 +121,11 @@
             src="img/WhatsApp Image 2025-07-17 at 13.31.02_33093d44.jpg"
             alt="Tentang Kami"
             data-aos="fade-up"
+
           />
         </div>
-        <div class="content" data-aos="fade-up">
+        <div class="content" data-aos="fade-up"
+         data-aos-anchor-placement="center-bottom">
           <h3>Servis Cvt</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
@@ -140,45 +138,31 @@
       </div>
     </section>
 
-    <!-- jam operasional -->
-   <section id="jam-operasional" class="jam-operasional">
-      <h3>Jam Operasional Bengkel</h3>
-      <hr />
-      <li>Senin-munggu : 08 - 17.00</li>
-      <li>Hari Raya Libur</li>
-    </section>
 
     <!-- contact -->
     <section id="contact" class="contact">
-      <h2>Kontak kami</h2>
-      <p>
+      <h2 data-aos="fade-down">Alamat</h2>
+      <p data-aos="fade-up" data-aos-delay="200">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, provident.
       </p>
+      
+      
+     <div class="clock" data-aos="zoom-in" data-aos-delay="400">
+    <h3>Jam Operasional</h3>
+    <ul>
+        <li><span>Senin - Jumat</span> <span>08.00 - 17.00</span></li>
+        <li><span>Sabtu</span> <span>08.00 - 14.00</span></li>
+        <li><span>Minggu</span> <span>Tutup</span></li>
+      </ul>
+    </div>
 
-      <div class="row">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3967.031362283402!2d106.52393207498956!3d-6.12648199386027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMDcnMzUuMyJTIDEwNsKwMzEnMzUuNCJF!5e0!3m2!1sid!2sid!4v1751946920307!5m2!1sid!2sid"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          class="map"
-        ></iframe>
 
-        <form action="">
-          <div class="input-group">
-            <i data-feather="user"></i>
-            <input type="text" placeholder="Nama" />
-          </div>
-          <div class="input-group">
-            <i data-feather="mail"></i>
-            <input type="text" placeholder="Email" />
-          </div>
-          <div class="input-group">
-            <i data-feather="message-square"></i>
-            <input type="text" placeholder="Pesan" />
-          </div>
-          <button type="submit" class="btn">Kirim Pesan</button>
-        </form>
+     <div class="map-container" data-aos="fade-up" data-aos-delay="600">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3068.250819266068!2d106.52393207498956!3d-6.12648199386027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMDcnMzUuMyJTIDEwNsKwMzEnMzUuNCJF!5e1!3m2!1sid!2sid!4v1754893705049!5m2!1sid!2sid"
+         width="600" height="450" style="border:0;" 
+         allowfullscreen="" loading="lazy" 
+         referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </section>
 
@@ -192,10 +176,9 @@
 
       <div class="link">
         <a href="#home">home</a>
-        <a href="layanan">Layanan</a>
+        <a href="#layanan">Layanan</a>
         <a href="#about">Tentang Kami</a>
-        <a href="#jam-operasional">Jam</a>
-        <a href="contact">Kontak</a>
+        <a href="#contact">Alamat</a>
       </div>
 
       <div class="credit">
@@ -203,14 +186,6 @@
         . | &Bengkel; 2025.</p>
       </div>
      </footer>
-
-     <!-- Tombol WhatsApp Mengambang -->
-     <a href="https://wa.me/6282134493486?text=Assalamu%20alaikum%20saya%20ingin%20bertanya%20tentang%20travel%20umrah"
-        class="floating-whatsapp"
-        target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="wa-icon">
-        <span class="wa-text">Hubungi Kami</span>
-     </a>
 
     <!-- feather icons -->
     <script>
