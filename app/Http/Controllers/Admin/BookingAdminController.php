@@ -10,31 +10,48 @@ class BookingAdminController extends Controller
 {
     public function index()
     {
+        // Ambil semua booking + relasi user
         $bookings = Booking::with('user')->latest()->get();
-        return view('admin.bookings.utama', compact('bookings'));
+
+        // Hitung total
+        $total_booking = Booking::count();
+
+        // Hitung per status
+        $selesai = Booking::where('status', 'selesai')->count();
+        $proses  = Booking::where('status', 'proses')->count();
+        $batal   = Booking::where('status', 'batal')->count();
+
+        return view('admin.bookings.utama', compact(
+            'bookings',
+            'total_booking',
+            'selesai',
+            'proses',
+            'batal'
+        ));
     }
 
-   public function updateStatus(Request $request, Booking $booking)
-{
-    $booking->status = $request->status;
-    $booking->save();
+    public function updateStatus(Request $request, Booking $booking)
+    {
+        $booking->status = $request->status;
+        $booking->save();
 
-    return back()->with('success', 'Status booking berhasil diperbarui.');
+        return back()->with('success', 'Status booking berhasil diperbarui.');
+    }
+
+    public function destroy(Booking $booking)
+    {
+        $booking->delete();
+        return back()->with('success', 'Booking berhasil dihapus.');
+    }
+
+    public function riwayat()
+    {
+        $bookings = \App\Models\Booking::where('user_id', auth()->id())
+            ->latest()
+            ->get();
+
+        return view('user.booking.riwayat', compact('bookings'));
+    }
 }
 
-public function destroy(Booking $booking)
-{
-    $booking->delete();
-    return back()->with('success', 'Booking berhasil dihapus.');
-}
-
-public function riwayat()
-{
-    $bookings = \App\Models\Booking::where('user_id', auth()->id())
-        ->latest()
-        ->get();
-
-    return view('user.booking.riwayat', compact('bookings'));
-}
-
-}
+  
