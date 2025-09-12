@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Register</h2>
+        
 
         @if ($errors->any())
             <div class="error">
@@ -20,6 +20,7 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
+            <h2>Register</h2>
 
             <div>
                 <label>Nama:</label>

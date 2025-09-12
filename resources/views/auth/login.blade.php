@@ -1,7 +1,7 @@
 <body>
      <link rel="stylesheet" href="css/login.css" />
     <div class="container">
-        <h2>Login</h2>
+        
 
         @if ($errors->any())
             <div class="error">
@@ -15,6 +15,7 @@
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
+            <h2>Login</h2>
 
             <div>
                 <label>Email:</label>

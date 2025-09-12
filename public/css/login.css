@@ -3,98 +3,337 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
 }
 
 body {
-    background: #c6c6bc;
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
+    padding: 20px;
+} 
 
 /* Container form */
 form {
     background: #fff;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 35px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     width: 100%;
     max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Input grup */
+    margin-bottom: 25px;
+    color: #222;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+} /* Input grup */
 div {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     color: #555;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 input[type="name"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
+    padding: 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
 }
 
-input[type="name"],
+input[type="name"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-    border-color: #007bff;
+    border-color: #66a6ff;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(102, 166, 255, 0.5);
     outline: none;
-}
+} 
 
 /* Tombol login */
 button[type="submit"] {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    padding: 12px;
+    background: linear-gradient(135deg, #66a6ff, #5c7cfa);
     border: none;
     color: #fff;
     font-weight: bold;
-    border-radius: 5px;
+    font-size: 1rem;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 button[type="submit"]:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #5c7cfa, #4a60d4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 /* Link daftar */
 p {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: #444;
 }
 
 p a {
-    color: #007bff;
+    color: #5c7cfa;
+    font-weight: 500;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 p a:hover {
+    color: #3c4bb7;
     text-decoration: underline;
-}
+} 
 
 /* Error handling */
 div[style*="color: red;"] {
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 12px;
     background: #ffe6e6;
-    border: 1px solid #ff4d4d;
-    border-radius: 5px;
+    border: 1.5px solid #ff4d4d;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #b30000;
+} 
+
+/* Background dengan gradient */
+body {
+    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+} 
+
+/* Container form dengan glassmorphism */
+form {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 380px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+} 
+
+/* Judul */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #222;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+} 
+
+/* Grup input */
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 500;
+} 
+
+/* Input dengan icon */
+.form-group input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 12px;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+.form-group input:focus {
+    border-color: #66a6ff;
+    background: #fff;
+    box-shadow: 0 0 6px rgba(102, 166, 255, 0.5);
+    outline: none;
+} 
+
+/* Icon dalam input */
+.form-group i {
+    position: absolute;
+    right: 12px;
+    top: 38px;
+    color: #888;
+    font-size: 1.1rem;
+} 
+
+/* Tombol login */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+} 
+
+/* Link daftar */
+p {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: #444;
+}
+p a {
+    color: #2575fc;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+p a:hover {
+    color: #6a11cb;
+    text-decoration: underline;
+} 
+
+/* Background hitam-merah */
+body {
+    background: linear-gradient(135deg, #000000, #400000, #8b0000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+} 
+
+/* Container form */
+form {
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 40px 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2);
+    width: 100%;
+    max-width: 380px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(255, 0, 0, 0.3);
+} 
+
+/* Judul */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ff2e2e;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+} 
+
+/* Grup input */
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #ccc;
+    font-size: 0.9rem;
+    font-weight: 500;
+} 
+
+/* Input */
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #333;
+    border-radius: 10px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+.form-group input:focus {
+    border-color: #ff2e2e;
+    background: #000;
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.6);
+    outline: none;
+} 
+
+/* Tombol login */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff0000, #990000);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #cc0000, #660000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+} 
+
+/* Link daftar */
+p {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+p a {
+    color: #ff2e2e;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+p a:hover {
+    color: #ff5555;
+    text-decoration: underline;
 }

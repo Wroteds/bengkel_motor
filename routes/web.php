@@ -65,9 +65,10 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 //ADMIN
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-     Route::get('/bookings', [BookingAdminController::class, 'index'])->name('bookings.index');
+    Route::get('/bookings', [BookingAdminController::class, 'index'])->name('bookings.index');
     Route::put('/bookings/{booking}/update-status', [BookingAdminController::class, 'updateStatus'])->name('bookings.updateStatus');
     Route::delete('/bookings/{booking}', [BookingAdminController::class, 'destroy'])->name('bookings.destroy');
+    Route::put('/admin/bookings/{booking}/status', [BookingAdminController::class, 'updateStatus'])->name('admin.bookings.updateStatus');
 });
 
 

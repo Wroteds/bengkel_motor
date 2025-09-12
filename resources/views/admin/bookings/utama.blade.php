@@ -25,7 +25,7 @@
         <button class="close-btn" onclick="closeSidebar()">✖</button>
         <ul class="menu">
             <li><a href="{{ route('admin.bookings.index') }}" class="active">📋 Booking</a></li>
-            <li><a href="{{ route('dashboard') }}">🏠 Dashboard</a></li>
+            <li><a href="{{ url('/')}}">🏠 Halaman utama</a></li>
         </ul>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
@@ -72,6 +72,7 @@
                         <th>Status</th>
                         <th>Catatan</th>
                         <th>Waktu booking</th>
+                        <th>Validasi booking</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
