@@ -16,10 +16,10 @@
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My style -->
-    <link rel="stylesheet" href="css/tampilan_awal.css" />
+    <link rel="stylesheet" href="{{ asset('css/tampilan_awal.css') }}">
+
     <link rel="stylesheet" href="aos/aos.css" />
     <link rel="stylesheet" href="css/login" />
-
   </head>
   <body>
     <!-- Navbar start -->
@@ -73,39 +73,27 @@
 
       <div class="row" data-aos="zoom-out-up">
         <div class="layanan-card">
-          <img
-            src="img/WhatsApp Image 2025-07-17 at 13.31.03_cbc95bf7.jpg"
-            alt="Servis Cvt"
-            class="layanan-card-img"
-          />
+          <img src="{{ asset('img/WhatsApp Image 2025-07-17 at 13.31.03_cbc95bf7.jpg') }}" alt="Servis Cvt" class="layanan-card-img"/>
           <h3 class="layanan-card-title">Servis Cvt</h3>
           <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
-          <img
-            src="img/WhatsApp Image 2025-07-17 at 14.44.22_cd48b40e.jpg"
-            alt="Penggantian Oli"
-            class="layanan-card-img"
-          />
+          <img src="{{ asset('img/WhatsApp Image 2025-07-17 at 14.44.22_cd48b40e.jpg') }}"alt="Penggantian Oli" class="layanan-card-img"/>
           <h3 class="layanan-card-title">Penggantian Oli</h3>
           <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
-          <img
-            src="img/WhatsApp Image 2025-07-17 at 13.31.02_a699e516.jpg"
-            alt="Servis Besar"
-            class="layanan-card-img"
-          />
+          <img src="{{ asset('img/WhatsApp Image 2025-07-17 at 13.31.02_a699e516.jpg') }}" alt="Servis Besar" class="layanan-card-img"/>
           <h3 class="layanan-card-title">Servis Besar</h3>
           <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
-          <img src="img/WhatsApp Image 2025-08-06 at 13.34.29_6ff848e7.jpg" alt="Kelistrikan" class="layanan-card-img" />
+          <img src="{{ asset('img/WhatsApp Image 2025-08-06 at 13.34.29_6ff848e7.jpg') }}" alt="Kelistrikan" class="layanan-card-img" />
           <h3 class="layanan-card-title">Kelistrikan</h3>
           <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
-          <img src="img/WhatsApp Image 2025-08-06 at 13.34.29_648db57d.jpg" alt="Repaint" class="layanan-card-img" />
+          <img src="{{ asset('img/WhatsApp Image 2025-08-06 at 13.34.29_648db57d.jpg') }}" alt="Repaint" class="layanan-card-img" />
           <h3 class="layanan-card-title">Repaint</h3>
           <p class="layanan-card-price">IDR 50K</p>
         </div>
@@ -117,16 +105,10 @@
       <h2 data-aos="zoom-in">Tentang Kami</h2>
       <div class="row">
         <div class="about-img">
-          <img
-            src="img/WhatsApp Image 2025-07-17 at 13.31.02_33093d44.jpg"
-            alt="Tentang Kami"
-            data-aos="fade-up"
-
-          />
+          <img src="{{ asset('img/WhatsApp Image 2025-07-17 at 13.31.02_33093d44.jpg') }}" alt="Tentang Kami" data-aos="fade-up" />
         </div>
         <div class="content" data-aos="fade-up"
          data-aos-anchor-placement="center-bottom">
-          <h3>Servis Cvt</h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
             nulla sunt eligendi consectetur nam minima, quibusdam harum. Magni a
@@ -193,10 +175,9 @@
     </script>
 
     <!-- My javascript -->
-    <script src="js/tampilan_awal.js"></script>
+    <script src="{{ asset('js/tampilan_awal.js') }}"></script>
     <script src="aos/aos.js"></script>
      <script src="js/login"></script>
-
     <script>
       AOS.init ({
         once: false

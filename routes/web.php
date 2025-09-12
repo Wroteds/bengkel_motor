@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //layanan
-Route::view('/views/tampilan_awal', 'user.tampilan_awal')->name('user.tampilan_awal');
+Route::view('/views/tampilan_awal', 'tampilan_awal')->name('user.tampilan_awal');
 Route::view('/views/layanan', 'user.layanan')->name('user.layanan');
 
 // booking

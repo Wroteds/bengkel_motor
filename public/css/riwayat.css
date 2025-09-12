@@ -1,74 +1,102 @@
+body {
+  background: linear-gradient(135deg, #eef2f3, #d9e4f5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .riwayat-container {
-    padding: 20px;
-    min-height: 100vh;
-    background: #f4f6f9;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.page-title {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #2c3e50;
-    font-weight: bold;
+.riwayat-container h2 {
+  font-weight: bold;
+  color: #0d6efd;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.empty-state {
-    text-align: center;
-    color: #777;
-}
-.empty-state img {
-    width: 120px;
-    margin-bottom: 10px;
+.table {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
 }
 
-.riwayat-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.table thead {
+  background: linear-gradient(90deg, #0d6efd, #5a9bf9);
+  color: #fff;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 0.5px;
 }
 
-.riwayat-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    transition: 0.3s;
+.table tbody tr {
+  transition: 0.2s;
 }
 
-.riwayat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+.table tbody tr:hover {
+  background: #f1f8ff;
+  transform: scale(1.01);
 }
 
-.riwayat-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 14px;
+.table td, 
+.table th {
+  padding: 14px;
+  vertical-align: middle;
 }
 
-.riwayat-date {
-    color: #555;
-    font-weight: 500;
+/* Pastikan kolom status rata tengah */
+.table td:nth-child(3),
+.table th:nth-child(3) {
+  text-align: center;
+  width: 150px; 
 }
 
-.riwayat-status {
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: capitalize;
+/* Kolom lain biar rapi */
+.table td:nth-child(1),
+.table td:nth-child(4) {
+  text-align: left;
 }
 
-/* warna status */
-.riwayat-status.selesai {
-    background: #2ecc71;
-    color: #fff;
+
+/* Badge Status */
+.status-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 25px;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
 }
-.riwayat-status.proses {
-    background: #f39c12;
-    color: #fff;
+
+.status-badge.pending {
+  background: #ffc107; 
+  color: #212529;
 }
-.riwayat-status.batal {
-    background: #e74c3c;
-    color: #fff;
+
+.status-badge.selesai {
+  background: #28a745; 
+}
+
+.status-badge.batal {
+  background: #dc3545;
+}
+
+/* Alert sukses */
+.alert {
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
 }

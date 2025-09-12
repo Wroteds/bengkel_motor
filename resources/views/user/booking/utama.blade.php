@@ -11,12 +11,6 @@
 @section('title', 'Dashboard User')
 
 @section('content')
-<div class="card-btn">
-    <a href="https://wa.me/6281234567890" target="_blank" class="service-card">
-        <h3>📱 Booking via WhatsApp</h3>
-        <p>Pesan servis dengan mudah langsung melalui WhatsApp.</p>
-    </a>
-
     <a href="{{ route('user.riwayat') }}" class="service-card grey">
         <h3>🛠️ Riwayat Servis</h3>
         <p>Lihat catatan servis motor Anda dengan lengkap.</p>
@@ -36,29 +30,30 @@
 <aside class="sidebar" id="sidebarMenu">
     <div class="user-profile text-center">
         {{-- Form upload foto profil --}}
-        <form id="photoForm" action="{{ route('user.updatePhoto') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <label for="profileInput">
-                @if(Auth::user()->profile_photo)
-                    <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" 
-                         class="profile-img" 
-                         id="profilePreview"
-                         alt="Foto Profil">
-                @else
-                  <img src="{{ asset('img/gear.png') }}" 
-                  class="profile-img" 
-                  id="profilePreview"
-                  alt="Default Foto">
-                @endif
-            </label>
-            <input type="file" name="profile_photo" id="profileInput" class="d-none" accept="image/*" onchange="document.getElementById('photoForm').submit();">
-        </form>
+<form id="photoForm" action="{{ route('user.updatePhoto') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <label for="profileInput">
+        @if(Auth::user()->profile_foto)
+            <img src="{{ asset('storage/' . Auth::user()->profile_foto) }}" 
+                 class="profile-img" 
+                 id="profilePreview"
+                 alt="Foto Profil">
+        @else
+            <img src="{{ asset('img/gear.png') }}" 
+                 class="profile-img" 
+                 id="profilePreview"
+                 alt="Default Foto">
+        @endif
+    </label>
+    <input type="file" name="profile_foto" id="profileInput" class="d-none" accept="image/*" onchange="document.getElementById('photoForm').submit();">
+</form>
+
         <h3>{{ Auth::user()->name }}</h3>
     </div>
 
     {{-- Menu --}}
     <ul class="menu">
-        <li><a href="return view('tampilan_awal')" class="menu-link">🏠 Tampilan Awal</a></li>
+       <li><a href="{{ route('user.tampilan_awal') }}" class="menu-link">🏠 Tampilan Awal</a></li>
         <li><a href="{{ route('user.layanan') }}" class="menu-link">⚙️ Layanan</a></li>
     </ul>
 
