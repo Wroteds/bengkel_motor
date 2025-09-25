@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class BookingAdminController extends Controller
 {
@@ -12,15 +13,15 @@ class BookingAdminController extends Controller
     {
         // Ambil semua booking + relasi user
         $bookings = Booking::with('user')->latest()->get();
-
-        // Hitung total
-        $total_booking = Booking::count();
-
-        // Hitung per status
-        $selesai = Booking::where('status', 'selesai')->count();
-        $proses  = Booking::where('status', 'proses')->count();
-        $batal   = Booking::where('status', 'batal')->count();
-
+        
+        // Hitung total booking berdasarkan status
+        $total_booking = $bookings->count();
+        $selesai = $bookings->where('status', 'selesai')->count();
+        $proses = $bookings->where('status', 'proses')->count();
+        $batal = $bookings->where('status', 'batal')->count();
+        $pending = $bookings->where('status', 'pending')->count(); 
+    
+        // Kirimkan semua variabel yang sudah dihitung ke view
         return view('admin.bookings.utama', compact(
             'bookings',
             'total_booking',
@@ -32,7 +33,19 @@ class BookingAdminController extends Controller
 
     public function updateStatus(Request $request, Booking $booking)
     {
+       //valildasi input
+       $request->validate([
+          'status' =>['required', Rule::in(['pending', 'proses', 'selesai', 'batal'])],
+          'completion_time' => ['nullable', 'date'],
+       ]);
+       
+       
         $booking->status = $request->status;
+        
+        if ($request->has('completion_time')){
+            $booking->completion_time = $request->completion_time;
+        }
+              
         $booking->save();
 
         return back()->with('success', 'Status booking berhasil diperbarui.');
@@ -53,5 +66,3 @@ class BookingAdminController extends Controller
         return view('user.booking.riwayat', compact('bookings'));
     }
 }
-
-  

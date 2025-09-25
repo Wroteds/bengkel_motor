@@ -14,7 +14,7 @@ class UserController extends Controller
     public function riwayat()
     {
         $riwayatServis = auth()->user()->riwayatServis; 
-        return view('dashboard.riwayat', compact('riwayatServis'));
+        return view('user.booking.riwayat', compact('riwayatServis'));
     }
 
     public function updatePhoto(Request $request)

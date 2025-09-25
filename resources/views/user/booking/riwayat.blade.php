@@ -25,6 +25,7 @@
     <tr>
       <th>Jenis Servis</th>
       <th>Tanggal</th>
+      <th>Waktu Selesai</th>
       <th>Status</th>
       <th>Catatan</th>
     </tr>
@@ -34,19 +35,24 @@
       <tr>
         <td class="text-start">{{ $booking->jenis_servis }}</td>
         <td>{{ \Carbon\Carbon::parse($booking->tanggal_booking)->format('d M Y') }}</td>
-    <td>
-        <span class="status-badge
-            {{ in_array(strtolower($booking->status), ['pending','menunggu','proses']) ? 'pending' 
-            : ($booking->status == 'selesai' ? 'selesai' 
-            : ($booking->status == 'batal' ? 'batal' : '')) }}">
-            {{ ucfirst($booking->status) }}
-          </span>
+        <td>
+            {{ $booking->completion_time ? \Carbon\Carbon::parse($booking->completion_time)->format('d M Y H:i') : '-' }}
+        </td>
+        
+        {{-- Baris ini yang diubah: menambahkan class 'text-center' --}}
+        <td class="text-center">
+            <span class="status-badge
+                {{ in_array(strtolower($booking->status), ['pending','menunggu','proses']) ? 'pending' 
+                : ($booking->status == 'selesai' ? 'selesai' 
+                : ($booking->status == 'batal' ? 'batal' : '')) }}">
+                {{ ucfirst($booking->status) }}
+            </span>
         </td>
         <td class="text-start">{{ $booking->catatan ?? '-' }}</td>
       </tr>
     @empty
       <tr>
-        <td colspan="4" class="text-center">Belum ada booking</td>
+        <td colspan="5" class="text-center">Belum ada booking</td>
       </tr>
     @endforelse
   </tbody>
@@ -55,10 +61,8 @@
   </div>
 </div>
 
-<!-- CSS -->
 <link rel="stylesheet" href="{{ asset('css/riwayat.css') }}">
 
-<!-- JS -->
 <script>
   setTimeout(() => {
     let alert = document.querySelector('.alert');
