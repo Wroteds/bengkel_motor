@@ -36,7 +36,7 @@
      <div class="login">
       @auth
          @if(Auth::user()->isAdmin())
-            <a href="{{ route('admin.bookings.index') }}">Dashboard Admin</a>
+            <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
          @else
             <a href="{{ route('user.dashboard') }}">Dashboard User</a>
        @endif

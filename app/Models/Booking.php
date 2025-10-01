@@ -16,7 +16,9 @@ class Booking extends Model
         'jenis_servis',
         'catatan',
         'tanggal_booking',
-        'status'
+        'status',
+        'kendaraan',
+        'alamat'
     ];
 
     public function user()

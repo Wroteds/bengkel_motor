@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -32,23 +33,28 @@ class BookingController extends Controller
         $request->validate([
             'jenis_servis' => 'required|string|max:255',
             'tanggal_booking' => 'required|date|after_or_equal:today',
-            'catatan' => 'nullable|string'
+            'catatan' => 'nullable|string',
+            'kendaraan' => 'required|string|max:255',
+            'alamat'    => 'required|string',
+           
         ]);
-
-        // Hitung jumlah booking user pada tanggal yang sama
-        $jumlahBooking = Booking::where('user_id', Auth::id())
-            ->whereDate('tanggal_booking', $request->tanggal_booking)
-            ->count();
-
-        if ($jumlahBooking >= 3) {
+        $max_bookings_per_week = 3; 
+        $seven_days_ago = Carbon::now()->subDays(7); 
+        $user_booking_this_week = Booking::where('user_id',Auth::id())
+              ->where('created_at', '>=', $seven_days_ago)
+              ->where('status', '!=', 'batal')
+              ->count();
+        if($user_booking_this_week >= $max_bookings_per_week){
             return redirect()->back()->withErrors([
-                'tanggal_booking' => 'Anda sudah mencapai batas maksimal 3 booking untuk tanggal ini.'
+                'booking_limit' => 'Maaf Hanya Bisa' . $max_bookings_per_week . 'Booking 3x dalam satu minggu(7 hari). Anda sudah mencapai batas'
             ]);
         }
 
         Booking::create([
             'user_id' => Auth::id(),
             'jenis_servis' => $request->jenis_servis,
+            'kendaraan' => $request->kendaraan,
+            'alamat' => $request->alamat,
             'catatan' => $request->catatan,
             'tanggal_booking' => $request->tanggal_booking,
             'status' => 'menunggu'

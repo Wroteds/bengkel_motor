@@ -11,9 +11,22 @@
 @section('title', 'Buat Booking')
 
 @section('content')
-<div class="container">
-  <div class="booking-card">
-    <h2>Booking Servis</h2>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card booking-card">
+                {{-- Form Booking --}}
+                <form action="{{ route('user.booking.store') }}" method="POST" id="bookingForm">
+                    @csrf
+                    
+                    {{-- START: KODE BARU UNTUK MENAMPILKAN ERROR BATAS BOOKING --}}
+                    @error('booking_limit')
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    {{-- END: KODE BARU --}}
+
 
     {{-- Form Booking --}}
     <form action="{{ route('user.booking.store') }}" method="POST" id="bookingForm">
@@ -31,6 +44,17 @@
       </div>
 
       <div class="mb-3">
+        <label for="kendaraan" class="form-label">Data Kendaraan(Motor)</label>
+        <textarea 
+          name="kendaraan" 
+          id="kendaraan" 
+          class="form-control" 
+          rows="3" 
+          placeholder="Harus Diisi!" 
+          required></textarea>
+      </div>
+
+      <div class="mb-3">
         <label for="tanggal_booking" class="form-label">Tanggal Booking</label>
         <input 
           type="date" 
@@ -38,6 +62,16 @@
           id="tanggal_booking" 
           class="form-control" 
           required>
+      </div>
+        
+     <div class="mb-3">
+        <label for="alamat" class="form-label">Alamat</label>
+        <textarea 
+          name="alamat" 
+          id="alamat" 
+          class="form-control" 
+          rows="3" 
+          placeholder="Masukkan alamat lengkap Anda jika motor ingin diambil"></textarea>
       </div>
 
       <div class="mb-3">

@@ -1,4 +1,6 @@
-
+/* ========================================= */
+/* admin.css - Dashboard Admin (final) */
+/* ========================================= */
 
 /* --- Variabel Warna --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -151,15 +153,12 @@ body {
 .table-card {
     background-color: var(--card-bg);
     border-radius: 8px;
-    padding: 0;
-    overflow-x: auto;
+    padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 .booking-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: auto;
-    margin: 0;
 }
 .booking-table thead th {
     background: linear-gradient(45deg, var(--primary-color), #a71d2a);
@@ -170,7 +169,6 @@ body {
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: .5px;
-    white-space: nowrap;
 }
 .booking-table tbody td {
     padding: 10px 10px;
@@ -178,15 +176,6 @@ body {
     font-size: 0.8rem;
     color: var(--text-dark);
 }
-
-/* Kolom aksi biar gak kepotong */
-.booking-table td:last-child,
-.booking-table th:last-child {
-    text-align: center;
-    min-width: 180px;   /* ruang cukup buat Simpan + Hapus */
-    white-space: nowrap;
-}
-
 .booking-table tbody tr:hover { background-color: #eef6ff; transition: 0.3s; }
 
 /* Status Badge */

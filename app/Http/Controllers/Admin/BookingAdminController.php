@@ -22,7 +22,7 @@ class BookingAdminController extends Controller
         $pending = $bookings->where('status', 'pending')->count(); 
     
         // Kirimkan semua variabel yang sudah dihitung ke view
-        return view('admin.bookings.utama', compact(
+        return view('admin.bookings.booking', compact(
             'bookings',
             'total_booking',
             'selesai',
