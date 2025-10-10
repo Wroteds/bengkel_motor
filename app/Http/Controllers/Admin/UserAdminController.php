@@ -10,17 +10,17 @@ class UserAdminController extends Controller
 {
     public function index()
     {
-        // Ambil semua user kecuali admin
-        $users = User::where('role', 'user')->get();
+        // Ambil semua user dengan role 'user'
+        $users = User::where('role', 'user')->latest()->get();
 
         return view('admin.users.index', compact('users'));
     }
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        // Hapus user
+        $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('admin.users.index')->with('success', 'User berhasil dihapus!');
+        return back()->with('success', 'User berhasil dihapus.');
     }
 }

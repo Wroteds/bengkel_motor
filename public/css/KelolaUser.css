@@ -1,0 +1,79 @@
+/* --- Global --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-bg);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    padding-top: 60px; /* biar konten gak ketutup navbar */
+}
+
+/* --- Navbar --- */
+.navbar-top {
+    background-color: var(--navbar-bg);
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.navbar-top .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-right: 30px;
+    white-space: nowrap;
+}
+
+.navbar-top .menu-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-grow: 1; 
+}
+
+.navbar-top .menu-nav li a {
+    display: block;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    font-weight: 500;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+}
+
+/* Aktif */
+.navbar-top .menu-nav li a.active {
+    background: transparent;
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--primary-color) !important;
+    font-weight: 600;
+}
+
+/* Hover */
+.navbar-top .menu-nav li a:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.logout-form { margin-left: 20px; }
+.logout-btn {
+    background-color: var(--batal-color);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.logout-btn:hover { background-color: #a71d2a; }

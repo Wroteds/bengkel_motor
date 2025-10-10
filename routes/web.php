@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +42,14 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::put('/bookings/{booking}/update-status', [BookingAdminController::class, 'updateStatus'])->name('bookings.updateStatus');
     Route::delete('/bookings/{booking}', [BookingAdminController::class, 'destroy'])->name('bookings.destroy');
 
-    // ✅ Kelola User
+    // Kelola User
     Route::get('/users', [UserAdminController::class, 'index'])->name('users.index');
     Route::delete('/users/{user}', [UserAdminController::class, 'destroy'])->name('users.destroy');
+    
+    // Setting
+    Route::get('/settings', [SettingController::class, 'index'])->name('settings.pengaturan');
+    Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
+ 
 });
 
 // --- Rute USER ---

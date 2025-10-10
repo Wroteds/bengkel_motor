@@ -100,5 +100,31 @@
 <script src="{{ asset('js/booking.js') }}"></script>
 @endpush
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('booking_limit_popup'))
+<script>
+Swal.fire({
+    icon: 'error',
+    title: 'Batas Booking Tercapai!',
+    text: "{{ session('booking_limit_popup') }}",
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'OK'
+});
+</script>
+@endif
+
+@if (session('success_popup'))
+<script>
+Swal.fire({
+    icon: 'success',
+    title: 'Berhasil!',
+    text: "{{ session('success_popup') }}",
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'OK'
+});
+</script>
+@endif
+
 </body>
 </html>

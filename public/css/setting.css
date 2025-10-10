@@ -1,0 +1,281 @@
+/* --- Global Variables (Tambahkan ini di bagian atas) --- */
+:root {
+    --primary-color: #4f46e5; /* Indigo */
+    --secondary-bg: #f3f4f6; /* Gray-100 for background */
+    --navbar-bg: #1f2937; /* Dark Gray/Slate */
+    --text-light: #f3f4f6;
+    --text-dark: #1f2937;
+    --batal-color: #dc2626; /* Red for Cancel/Logout */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Global --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-bg);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    padding-top: 60px; /* biar konten gak ketutup navbar */
+    color: var(--text-dark);
+}
+
+
+/* --- Navbar --- */
+.navbar-top {
+    background-color: var(--navbar-bg);
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.navbar-top .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-right: 30px;
+    white-space: nowrap;
+}
+
+.navbar-top .menu-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-grow: 1; 
+}
+
+.navbar-top .menu-nav li a {
+    display: block;
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    font-weight: 500;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+}
+
+/* Aktif */
+.navbar-top .menu-nav li a.active {
+    background: transparent;
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--primary-color) !important;
+    font-weight: 600;
+}
+
+/* Hover */
+.navbar-top .menu-nav li a:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.logout-form { margin-left: 20px; }
+.logout-btn {
+    background-color: var(--batal-color);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.logout-btn:hover { background-color: #a71d2a; }
+
+
+
+/* ================================================= */
+/* --- Konten Utama Pengaturan --- */
+/* ================================================= */
+
+.p-8 {
+    padding: 2rem; 
+}
+
+.min-h-screen {
+    min-height: calc(100vh - 60px); 
+}
+
+/* Header Halaman */
+.setting-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem; 
+}
+
+.setting-header h2 {
+    font-size: 2.25rem;
+    font-weight: 700; 
+    color: var(--text-dark);
+}
+
+.setting-header h2 i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Tombol "Ubah Batas Booking" */
+.btn-ubah-batas {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s ease;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-ubah-batas:hover {
+    background-color: #3730a3; /* Indigo 700 */
+}
+
+/* Kotak Info Batas Booking Aktif */
+.info-box {
+    background-color: white;
+    border-radius: 1rem; /* Menggantikan rounded-2xl */
+    padding: 1.5rem; /* Menggantikan p-6 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Menggantikan shadow-md */
+    max-width: 28rem; /* Menggantikan max-w-md */
+    border-left: 5px solid var(--primary-color);
+}
+
+.info-box h4 {
+    font-size: 1.125rem; /* Menggantikan text-lg */
+    font-weight: 600; /* Menggantikan font-semibold */
+    color: #4b5563; /* Gray-700 */
+    margin-bottom: 0.75rem; /* Menggantikan mb-3 */
+}
+
+.info-box p {
+    font-size: 3rem; /* Menggantikan text-4xl, dibuat lebih besar */
+    font-weight: 800; /* Menggantikan font-bold */
+    color: var(--primary-color); /* Menggantikan text-indigo-600 */
+    margin: 0;
+}
+
+/* ================================================= */
+/* --- Modal (Pop-up) --- */
+/* ================================================= */
+
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Opacity 50% */
+    display: none; /* Default state for JS */
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 1rem; /* Menggantikan rounded-2xl */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Shadow-lg */
+    padding: 1.5rem; /* Menggantikan p-6 */
+    width: 90%;
+    max-width: 24rem; /* Menggantikan w-96 */
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Animasi sederhana untuk modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 1.5rem;
+    color: #6b7280; /* Gray-500 */
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.modal-close-btn:hover {
+    color: #374151; /* Gray-700 */
+}
+
+.modal-content h3 {
+    font-size: 1.25rem; /* Text-xl */
+    font-weight: 700; /* Font-bold */
+    margin-bottom: 1rem; /* Mb-4 */
+    color: var(--text-dark);
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+/* Input Form */
+.form-label {
+    display: block;
+    font-size: 0.875rem; /* Text-sm */
+    font-weight: 500;
+    color: #4b5563; /* Gray-600 */
+    margin-bottom: 0.5rem; /* Mb-2 */
+}
+
+.form-input {
+    width: 100%;
+    border: 1px solid #d1d5db; /* Gray-300 */
+    padding: 0.5rem; /* P-2 */
+    border-radius: 0.5rem; /* Rounded-lg */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); /* Ring-2 ring-indigo-400 */
+}
+
+/* Tombol Aksi Modal */
+.modal-actions {
+    margin-top: 1.25rem; /* Mt-5 */
+    display: flex;
+    justify-content: flex-end; /* Justify-end */
+    gap: 0.75rem; /* Gap-3 */
+}
+
+.btn-batal {
+    padding: 0.5rem 1rem; /* Px-4 py-2 */
+    background-color: #d1d5db; /* Gray-300 */
+    color: var(--text-dark);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-batal:hover {
+    background-color: #9ca3af; /* Gray-400 */
+}
+
+.btn-simpan {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color); /* Indigo-600 */
+    color: white;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-simpan:hover {
+    background-color: #3730a3; /* Indigo-700 */
+}

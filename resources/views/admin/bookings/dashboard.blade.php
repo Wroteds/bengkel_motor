@@ -19,9 +19,10 @@
 
     <ul class="menu-nav">
         <li><a href="{{ route('admin.dashboard') }}" class="active"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+        <li><a href="{{ route('admin.bookings.index') }}"><i class="bi bi-journal-text"></i> 📋 Kelola Booking</a></li>
+        <li><a href="{{ route('admin.users.index') }}"><i class="bi bi-journal-text"></i>👥 Kelola User</a></li>
+        <li><a href="{{ route('admin.settings.pengaturan') }}"><i class="bi bi-journal-text"></i>Pengaturan</a></li>
         <li><a href="{{ url('/')}}">🏠 Halaman utama</a></li>
-        <li><a href="{{ route('admin.bookings.index') }}"><i class="bi bi-journal-text"></i> Kelola Booking</a></li>
-        <li><a href="{{ route('admin.users.index') }}"><i class="bi bi-journal-text"></i> Kelola User</a></li>
     </ul>
 
     {{-- Tombol Logout --}}

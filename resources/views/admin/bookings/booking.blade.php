@@ -24,10 +24,11 @@
 
     <!-- Menu Navigasi -->
     <ul class="menu-nav">
-        <li><a href="{{ route('admin.dashboard') }}" class="active">🏠 Dashboard</a></li>
-        <li><a href="{{ url('/')}}">🏠 Halaman utama</a></li>
+        <li><a href="{{ route('admin.dashboard') }}" class="active">Dashboard</a></li>
         <li><a href="{{ route('admin.bookings.index') }}">📋 Kelola Booking</a></li>
         <li><a href="{{ route('admin.users.index') }}">👥 Kelola User</a></li>
+        <li><a href="{{ route('admin.settings.pengaturan') }}"><i class="bi bi-journal-text"></i>Pengaturan</a></li>
+        <li><a href="{{ url('/')}}">🏠 Halaman utama</a></li>
         <li>
             <form class="logout-form" method="POST" action="{{ route('logout') }}">
                 @csrf
