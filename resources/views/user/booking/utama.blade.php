@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- Memuat CSS riwayat.css (yang berisi styling navbar) --}}
     <link rel="stylesheet" href="riwayat.css"> 
+    <link rel="stylesheet" href="{{ asset('css/riwayat.css') }}">
 </head>
 <body>
 

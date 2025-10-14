@@ -23,7 +23,7 @@
         <ul class="navbar-menu">
             <li><a href="{{ route('user.booking.create') }}" class="menu-link">📝 Booking</a></li>
             <li><a href="{{ route('user.riwayat') }}" class="menu-link active">🛠️ Riwayat Servis</a></li>
-            <li><a href="{{ route('user.booking.index') }}" class="menu-link">⚙️ Layanan</a></li>
+            <li><a href="{{ route('user.booking.utama') }}" class="menu-link">⚙️ Layanan</a></li>
 
             <li><a href="{{ route('user.tampilan_awal') }}" class="menu-link">🏠 Tampilan Awal</a></li>
         </ul>

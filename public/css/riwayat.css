@@ -1,11 +1,128 @@
+/* --- BODY & DASAR --- */
 body {
   background: linear-gradient(135deg, #eef2f3, #d9e4f5);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
 }
 
+/* --- NAVBAR STYLING --- */
+.navbar {
+  background: linear-gradient(90deg, #0d6efd, #5a9bf9);
+  color: #fff;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.navbar-menu li a:hover,
+.navbar-menu li a.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.logout-btn {
+  border: 2px solid #fff !important;
+  background: none !important;
+  color: #fff !important;
+  padding: 8px 15px !important;
+  border-radius: 25px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.logout-btn:hover {
+  background: #ffeb3b !important;
+  color: #0d6efd !important;
+  border-color: #ffeb3b !important;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  position: fixed;
+  top: 60px; /* di bawah navbar */
+  left: 0;
+  width: 220px;
+  height: calc(100vh - 60px);
+  background: #f8f9fa;
+  border-right: 2px solid #dbe3f0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px 10px;
+}
+
+.sidebar a {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  margin-bottom: 8px;
+  color: #0d6efd;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: #e8f0ff;
+  color: #084298;
+}
+
+/* --- KONTEN UTAMA --- */
+.main-content {
+  margin-left: 220px; /* beri ruang untuk sidebar */
+  margin-top: 80px;   /* beri ruang untuk navbar */
+  padding: 20px;
+  flex: 1;
+}
+
+/* --- RIWAYAT CONTAINER --- */
 .riwayat-container {
   max-width: 900px;
-  margin: 50px auto;
+  margin: 0 auto;
   padding: 30px;
   background: #ffffff;
   border-radius: 20px;
@@ -20,10 +137,13 @@ body {
   margin-bottom: 25px;
 }
 
+/* --- TABEL --- */
 .table {
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .table thead {
@@ -32,6 +152,12 @@ body {
   text-align: center;
   font-size: 15px;
   letter-spacing: 0.5px;
+}
+
+.table td, 
+.table th {
+  padding: 14px;
+  vertical-align: middle;
 }
 
 .table tbody tr {
@@ -43,25 +169,12 @@ body {
   transform: scale(1.01);
 }
 
-.table td, 
-.table th {
-  padding: 14px;
-  vertical-align: middle;
-}
-
-/* Pastikan kolom status rata tengah */
+/* Kolom rapi */
 .table td:nth-child(3),
 .table th:nth-child(3) {
   text-align: center;
   width: 150px; 
 }
-
-/* Kolom lain biar rapi */
-.table td:nth-child(1),
-.table td:nth-child(4) {
-  text-align: left;
-}
-
 
 /* Badge Status */
 .status-badge {
@@ -87,7 +200,7 @@ body {
   background: #dc3545;
 }
 
-/* Alert sukses */
+/* Alert */
 .alert {
   border-radius: 12px;
   font-size: 14px;
@@ -95,102 +208,51 @@ body {
   text-align: center;
 }
 
-/* --- NAVBAR STYLING --- */
-.navbar {
-  background: linear-gradient(90deg, #0d6efd, #5a9bf9);
-  color: #fff;
-  padding: 15px 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.navbar-container {
-  max-width: 1200px; /* Lebarkan sedikit */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.navbar-logo {
-  font-size: 24px; /* Perbesar sedikit */
-  font-weight: bold;
-}
-
-.navbar-menu {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-menu li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-  padding: 5px 10px; /* Tambahkan padding */
-  border-radius: 5px;
-}
-
-.navbar-menu li a:hover,
-.navbar-menu li a.active {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.2); /* Efek background pada hover/aktif */
-  text-decoration: none;
-}
-
-/* Styling untuk tombol Logout di Navbar */
-.logout-btn {
-    border: 2px solid #fff !important;
-    background: none !important;
-    color: #fff !important;
-    padding: 8px 15px !important;
-    border-radius: 25px !important;
-    font-weight: 600 !important;
-    cursor: pointer !important;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-
-.logout-btn:hover {
-    background: #ffeb3b !important;
-    color: #0d6efd !important;
-    border-color: #ffeb3b !important;
-}
-
-/* --- MEDIA QUERY (RESPONSIVE) --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    .navbar-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    box-shadow: none;
+    top: 0;
+  }
 
-    .navbar-menu {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-    }
+  .main-content {
+    margin-left: 0;
+    margin-top: 20px;
+    padding: 15px;
+  }
 
-    .navbar-menu li {
-        width: 100%;
-        text-align: left;
-    }
-    
-    .navbar-menu li a {
-        display: block; /* Agar link memenuhi lebar */
-        padding: 10px 15px;
-        border-radius: 8px;
-    }
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
 }
-
 
 /* Animasi */
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(10px);}
   to {opacity: 1; transform: translateY(0);}
+}
+
+
+
+/*  */
+.riwayat-container {
+  max-width: 900px;
+  margin: 100px auto 50px auto; /* <--- ubah nilai ini */
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
 }
