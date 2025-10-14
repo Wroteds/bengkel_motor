@@ -95,6 +95,100 @@ body {
   text-align: center;
 }
 
+/* --- NAVBAR STYLING --- */
+.navbar {
+  background: linear-gradient(90deg, #0d6efd, #5a9bf9);
+  color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 1200px; /* Lebarkan sedikit */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  font-size: 24px; /* Perbesar sedikit */
+  font-weight: bold;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+  padding: 5px 10px; /* Tambahkan padding */
+  border-radius: 5px;
+}
+
+.navbar-menu li a:hover,
+.navbar-menu li a.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.2); /* Efek background pada hover/aktif */
+  text-decoration: none;
+}
+
+/* Styling untuk tombol Logout di Navbar */
+.logout-btn {
+    border: 2px solid #fff !important;
+    background: none !important;
+    color: #fff !important;
+    padding: 8px 15px !important;
+    border-radius: 25px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.logout-btn:hover {
+    background: #ffeb3b !important;
+    color: #0d6efd !important;
+    border-color: #ffeb3b !important;
+}
+
+/* --- MEDIA QUERY (RESPONSIVE) --- */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .navbar-menu {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .navbar-menu li {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .navbar-menu li a {
+        display: block; /* Agar link memenuhi lebar */
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+}
+
+
 /* Animasi */
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(10px);}

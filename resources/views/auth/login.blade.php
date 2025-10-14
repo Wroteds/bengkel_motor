@@ -1,40 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+</head>
 <body>
-     <link rel="stylesheet" href="css/login.css" />
-    <div class="container">
-        
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+        <h2>Login</h2>
 
+        {{-- Error message --}}
         @if ($errors->any())
-            <div class="error">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+            <div style="color: red;">
+                @foreach ($errors->all() as $error)
+                    {{ $error }} <br>
+                @endforeach
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-            <h2>Login</h2>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required placeholder="Masukkan email Anda">
+        </div>
 
-            <div>
-                <label>Email:</label>
-                <input type="email" name="email" value="{{ old('email') }}" required autofocus>
-            </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required placeholder="Masukkan password">
+        </div>
 
-            <div>
-                <label>Password:</label>
-                <input type="password" name="password" required>
-            </div>
+        <button type="submit">Login</button>
 
-            <div>
-                <button type="submit">Login</button>
-            </div>
+        <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
 
-            <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
-        </form>
-    </div>
-
-    <!-- js -->
-    <script src="js/login.js"></script>
+        {{-- 🔹 Link Lupa Password --}}
+        <p class="forgot-password">
+            <a href="{{ route('password.request') }}">Lupa Password?</a>
+        </p>
+    </form>
 </body>
+</html>

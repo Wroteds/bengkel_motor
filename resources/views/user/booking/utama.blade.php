@@ -3,79 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard User</title>
+    <title>Riwayat Booking Anda</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- Memuat CSS riwayat.css (yang berisi styling navbar) --}}
+    <link rel="stylesheet" href="riwayat.css"> 
 </head>
 <body>
-@extends('layouts.app')
 
-@section('title', 'Dashboard User')
-
-@section('content')
-    {{-- Tombol hamburger --}}
-    <button class="hamburger" id="hamburgerBtn">&#9776;</button>
-
-    {{-- Sidebar --}}
-    <aside class="sidebar" id="sidebarMenu">
-        <div class="user-profile text-center">
-            {{-- Form upload foto profil --}}
-            <form id="photoForm" action="{{ route('user.updatePhoto') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <label for="profileInput">
-                    @if(Auth::user()->profile_foto)
-                        <img src="{{ asset('storage/' . Auth::user()->profile_foto) }}" 
-                             class="profile-img" 
-                             id="profilePreview"
-                             alt="Foto Profil">
-                    @else
-                        <img src="{{ asset('img/gear.png') }}" 
-                             class="profile-img" 
-                             id="profilePreview"
-                             alt="Default Foto">
-                    @endif
-                </label>
-                <input type="file" name="profile_foto" id="profileInput" class="d-none" accept="image/*" onchange="document.getElementById('photoForm').submit();">
-            </form>
-
-            <h3>{{ Auth::user()->name }}</h3>
+{{-- NAVBAR BARU (Menggantikan Sidebar) --}}
+<nav class="navbar">
+    <div class="navbar-container">
+        {{-- Logo atau Nama Aplikasi --}}
+        <div class="navbar-logo">
+            🛠️ BengkelGO
         </div>
-
-        {{-- Menu --}}
-        <ul class="menu">
-            <li><a href="{{ route('user.booking.create') }}" class="menu-link">📝 Booking</a></li>
-            <li><a href="{{ route('user.riwayat') }}" class="menu-link">🛠️ Riwayat Servis</a></li>
+        
+        {{-- Menu Navigasi --}}
+        <ul class="navbar-menu">
             <li><a href="{{ route('user.tampilan_awal') }}" class="menu-link">🏠 Tampilan Awal</a></li>
             <li><a href="{{ route('user.layanan') }}" class="menu-link">⚙️ Layanan</a></li>
+            <li><a href="{{ route('user.booking.create') }}" class="menu-link">📝 Booking</a></li>
+            {{-- Tambahkan class 'active' untuk halaman yang sedang aktif --}}
+            <li><a href="{{ route('user.riwayat') }}" class="menu-link active">🛠️ Riwayat Servis</a></li>
         </ul>
 
-        {{-- Logout --}}
-        <form action="{{ route('logout') }}" method="POST" class="logout-form">
+        {{-- Logout Button --}}
+        <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
             @csrf
-            <button type="submit" class="logout-btn menu-link">🚪 Logout</button>
+            <button type="submit" class="logout-btn navbar-link" style="
+                background: none; 
+                border: 2px solid #fff; 
+                color: #fff; 
+                padding: 8px 15px; 
+                border-radius: 20px; 
+                cursor: pointer; 
+                font-weight: 500;
+                transition: 0.3s;">
+                🚪 Logout
+            </button>
         </form>
-    </aside>
+    </div>
+</nav>
 
-    {{-- Konten utama --}}
-    <main class="content">
-        <div class="welcome-box">
-            <h1>🚀 Selamat Datang, {{ Auth::user()->name }}!</h1>
-            <p>
-                Kami siap membantu perawatan motor Anda dengan mudah, cepat, dan terpercaya.  
-                Gunakan menu di sebelah kiri untuk mulai booking servis atau melihat riwayat servis motor Anda.
-            </p>
-            <p class="tagline">✨ Servis jadi lebih simpel, pengalaman berkendara lebih maksimal! ✨</p>
-        </div>
-    </main>
-@endsection
+{{-- KONTEN UTAMA (Riwayat Booking) --}}
+<div class="riwayat-container">
+    <h2>Riwayat Booking Anda</h2>
 
-{{-- Tambahkan CSS khusus halaman ini --}}
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/user.css') }}">
-@endpush
+    <table class="table" style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Jenis Servis</th>
+                <th>Tanggal</th>
+                <th>Waktu Selesai</th>
+                <th>Status</th>
+                <th>Catatan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>ganti mesin</td>
+                <td>24 Oct 2025</td>
+                <td>-</td>
+                <td style="text-align: center;">
+                    <span class="status-badge pending">Menunggu</span>
+                </td>
+                <td>asfasf</td>
+            </tr>
+            <tr>
+                <td>ganti mesin</td>
+                <td>15 Oct 2025</td>
+                <td>10 Oct 2025<br>11:07</td>
+                <td style="text-align: center;">
+                    <span class="status-badge" style="background: orange; color: #fff;">Proses</span>
+                </td>
+                <td>sdfsdf</td>
+            </tr>
+            {{-- Tambahkan baris lain di sini --}}
+        </tbody>
+    </table>
+</div>
 
-{{-- Tambahkan JS khusus halaman ini --}}
-@push('scripts')
-<script src="{{ asset('js/user.js') }}"></script>
-@endpush
 </body>
 </html>

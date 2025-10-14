@@ -14,13 +14,18 @@ class SettingController extends Controller
         return view('admin.settings.pengaturan', compact('maxBooking'));
     }
 
-    public function update(Request $request)
-    {
-        $request->validate(['value' => 'required|numeric|min:1|max:10']);
+  public function update(Request $request)
+{
+    $request->validate([
+        'max_booking' => 'required|numeric|min:1|max:10'
+    ]);
 
-    Setting::updateOrCreate(['key' => 'max_booking'], ['value' => $request->max_booking]);
+    Setting::updateOrCreate(
+        ['key' => 'max_booking'],
+        ['value' => $request->max_booking]
+    );
 
+    return redirect()->back()->with('success', 'Batas booking berhasil diperbarui!');
+}
 
-        return redirect()->back()->with('success', 'Batas booking berhasil diperbarui!');
-    }
 }

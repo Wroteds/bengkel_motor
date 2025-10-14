@@ -60,28 +60,21 @@
         <button onclick="closeModal()" class="modal-close-btn">&times;</button>
         <h3>Ubah Batas Booking</h3>
 
-        <form action="{{ route('admin.settings.update') }}" method="POST">
-            @csrf
-            @method('PUT')
-            {{-- Ganti class label --}}
-            <label for="value" class="form-label">Jumlah Maksimal Booking Aktif</label>
-            {{-- Ganti class input --}}
-            <input type="number" name="value" id="value"
-                   value="{{ $maxBooking->value ?? 3 }}" min="1" max="10"
-                   class="form-input"> 
+<form action="{{ route('admin.settings.update') }}" method="POST">
+    @csrf
+    @method('PUT')
+    <label for="max_booking">Batas Maksimal Booking per Minggu:</label>
+    <input 
+        type="number" 
+        name="max_booking" 
+        id="max_booking" 
+        class="form-control" 
+        value="{{ $maxBooking->value ?? '' }}" 
+        min="1" max="10" required>
 
-            {{-- Ganti class div aksi --}}
-            <div class="modal-actions"> 
-                {{-- Ganti class tombol batal --}}
-                <button type="button" onclick="closeModal()" class="btn-batal"> 
-                    Batal
-                </button>
-                {{-- Ganti class tombol simpan --}}
-                <button type="submit" class="btn-simpan">
-                    Simpan
-                </button>
-            </div>
-        </form>
+    <button type="submit" class="btn btn-primary mt-2">Simpan</button>
+</form>
+
     </div>
 </div>
 

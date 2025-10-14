@@ -10,8 +10,37 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="riwayat-container">
-  <h2 class="mb-4 text-center">Riwayat Booking Anda</h2>
+
+<nav class="navbar">
+    <div class="navbar-container">
+        
+        {{-- Logo atau Nama Aplikasi --}}
+        <div class="navbar-logo">
+            🛠️ Bengkel App
+        </div>
+        
+        {{-- 2. Daftar Menu (UL) --}}
+        <ul class="navbar-menu">
+            <li><a href="{{ route('user.booking.create') }}" class="menu-link">📝 Booking</a></li>
+            <li><a href="{{ route('user.riwayat') }}" class="menu-link active">🛠️ Riwayat Servis</a></li>
+            <li><a href="{{ route('user.booking.index') }}" class="menu-link">⚙️ Layanan</a></li>
+
+            <li><a href="{{ route('user.tampilan_awal') }}" class="menu-link">🏠 Tampilan Awal</a></li>
+        </ul>
+
+        {{-- 3. Tombol Logout (Tetap di dalam Navbar-Container) --}}
+        <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+            @csrf
+            {{-- Menggunakan class logout-btn yang sudah didefinisikan di CSS --}}
+            <button type="submit" class="logout-btn">
+                🚪 Logout
+            </button>
+        </form>
+    </div>
+</nav>
+
+  <div class="riwayat-container">
+     <h2 class="mb-4 text-center">Riwayat Booking Anda</h2>
 
   @if(session('success'))
     <div class="alert alert-success text-center">

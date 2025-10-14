@@ -55,9 +55,9 @@
       </div>
 
       <div class="mb-3">
-        <label for="tanggal_booking" class="form-label">Tanggal Booking</label>
+        <label for="tanggal_booking" class="form-label">Tanggal Booking & Jam Booking</label>
         <input 
-          type="date" 
+          type="datetime-local" 
           name="tanggal_booking" 
           id="tanggal_booking" 
           class="form-control" 
