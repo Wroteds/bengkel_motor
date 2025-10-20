@@ -22,22 +22,48 @@
         ☰
     </button>
 
-    <!-- Menu Navigasi -->
+   <!-- Menu Navigasi -->
     <ul class="menu-nav">
-        <li><a href="{{ route('admin.dashboard') }}" class="active">Dashboard</a></li>
-        <li><a href="{{ route('admin.bookings.index') }}">📋 Kelola Booking</a></li>
-        <li><a href="{{ route('admin.users.index') }}">👥 Kelola User</a></li>
-        <li><a href="{{ route('admin.settings.pengaturan') }}"><i class="bi bi-journal-text"></i>Pengaturan</a></li>
-        <li><a href="{{ url('/')}}">🏠 Halaman utama</a></li>
+        <li>
+            <a href="{{ route('admin.dashboard') }}" 
+               class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+               Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.bookings.index') }}" 
+               class="{{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}">
+               📋 Kelola Booking
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.users.index') }}" 
+               class="{{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+               👥 Kelola User
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('admin.settings.pengaturan') }}" 
+               class="{{ request()->routeIs('admin.settings.*') ? 'active' : '' }}">
+               <i class="bi bi-journal-text"></i> Pengaturan
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url('/') }}">🏠 Halaman utama</a>
+        </li>
+
         <li>
             <form class="logout-form" method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="logout-btn">Logout</button>
             </form>
         </li>
-    </ul>
+    </ul>
 </div>
-
 
 {{-- Konten utama --}}
 <div class="content-wrapper"> 
@@ -64,78 +90,84 @@
     </div>
 
     {{-- Judul Booking --}}
-    <h2 class="content-header mt-5 mb-3">
-        <i class="bi bi-clipboard-check"></i> Kelola Booking
-    </h2>
+<h2 class="content-header mt-5 mb-3">
+    <i class="bi bi-clipboard-check"></i> Kelola Booking
+</h2>
 
-    {{-- Tabel Booking --}}
-    <div class="card table-card shadow">
-        {{-- ... (Isi Tabel Booking tetap sama seperti sebelumnya) ... --}}
-        <table class="table table-striped table-hover booking-table">
-            <thead class="table-dark">
-                <tr>
-                    <th>User</th>
-                    <th>Jenis Servis</th>
-                    <th>Kendaraan</th> 
-                    <th>Alamat</th> 
-                    <th>Tanggal</th>
-                    <th>Status</th>
-                    <th>Catatan</th>
-                    <th>Waktu Selesai</th>
-                    <th>Validasi booking</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($bookings as $booking)
-                <tr>
-                    <td data-label="User">{{ $booking->user->name ?? '-' }}</td>
-                    <td data-label="Servis">{{ $booking->jenis_servis }}</td>
-                    <td data-label="Kendaraan">{{ $booking->kendaraan ?? '-' }}</td>
-                    <td data-label="Alamat" class="alamat-cell" title="{{ $booking->alamat ?? 'N/A' }}">{{ Str::limit($booking->alamat ?? '-', 30) }}</td>
-                    <td data-label="Tanggal">{{ \Carbon\Carbon::parse($booking->tanggal_booking)->format('d M Y') }}</td>
-                    <td data-label="Status">
-                        <span class="status-badge status-{{ $booking->status }}">
-                            {{ ucfirst($booking->status) }}
-                        </span>
+<div class="card table-card shadow">
+    <table class="table table-striped table-hover booking-table">
+        <thead class="table-dark">
+            <tr>
+                <th>User</th>
+                <th>Jenis Servis</th>
+                <th>Kendaraan</th> 
+                <th>Alamat</th> 
+                <th>Tanggal</th>
+                <th>Status</th>
+                <th>Catatan</th>
+                <th>Catatan Admin</th>
+                <th>Waktu Selesai</th>
+                <th>Validasi booking</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($bookings as $booking)
+            <tr>
+                <td data-label="User">{{ $booking->user->name ?? '-' }}</td>
+                <td data-label="Servis">{{ $booking->jenis_servis }}</td>
+                <td data-label="Kendaraan">{{ $booking->kendaraan ?? '-' }}</td>
+                <td data-label="Alamat" class="alamat-cell" title="{{ $booking->alamat ?? 'N/A' }}">{{ Str::limit($booking->alamat ?? '-', 30) }}</td>
+                <td data-label="Tanggal">{{ \Carbon\Carbon::parse($booking->tanggal_booking)->format('d M Y') }}</td>
+                <td data-label="Status">
+                    <span class="status-badge status-{{ $booking->status }}">
+                        {{ ucfirst($booking->status) }}
+                    </span>
+                </td>
+                <td data-label="Catatan" class="catatan-cell" title="{{ $booking->catatan ?? '-' }}">{{ Str::limit($booking->catatan ?? '-', 20) }}</td>
+                
+                <form action="{{ route('admin.bookings.updateStatus', $booking->id) }}" method="POST" class="d-inline update-form">
+                    @csrf
+                    @method('PUT')
+
+                    <!-- Catatan Admin -->
+                <td data-label="Catatan Admin">
+                   <textarea name="catatan_admin" class="form-control form-control-sm" rows="2">{{ $booking->catatan_admin }}</textarea>
+                </td>
+
+                    <td data-label="Waktu Selesai">
+                        <input type="datetime-local" name="completion_time" value="{{ $booking->completion_time ? \Carbon\Carbon::parse($booking->completion_time)->format('Y-m-d\TH:i') : '' }}" class="form-control form-control-sm datetime-input">
                     </td>
-                    <td data-label="Catatan" class="catatan-cell" title="{{ $booking->catatan ?? '-' }}">{{ Str::limit($booking->catatan ?? '-', 20) }}</td>
                     
-                    <form action="{{ route('admin.bookings.updateStatus', $booking->id) }}" method="POST" class="d-inline update-form">
-                        @csrf
-                        @method('PUT')
-                        
-                        <td data-label="Waktu Selesai">
-                            <input type="datetime-local" name="completion_time" value="{{ $booking->completion_time ? \Carbon\Carbon::parse($booking->completion_time)->format('Y-m-d\TH:i') : '' }}" class="form-control form-control-sm datetime-input">
-                        </td>
-                        
-                        <td data-label="Validasi booking">
-                            <select name="status" class="form-select form-select-sm status-select">
-                                <option value="pending" {{ $booking->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                <option value="proses" {{ $booking->status == 'proses' ? 'selected' : '' }}>Proses</option>
-                                <option value="selesai" {{ $booking->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
-                                <option value="batal" {{ $booking->status == 'batal' ? 'selected' : '' }}>Batal</option>
-                            </select>
-                        </td>
+                    <td data-label="Validasi booking">
+                        <select name="status" class="form-select form-select-sm status-select">
+                            <option value="pending" {{ $booking->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="proses" {{ $booking->status == 'proses' ? 'selected' : '' }}>Proses</option>
+                            <option value="selesai" {{ $booking->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                            <option value="batal" {{ $booking->status == 'batal' ? 'selected' : '' }}>Batal</option>
+                        </select>
+                    </td>
 
-                        <td data-label="Aksi" class="action-cell">
-                            <button type="submit" class="btn btn-sm btn-primary action-btn save-btn">Simpan</button>
-                    </form>
-                    <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST" class="d-inline delete-form">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger action-btn delete-btn" onclick="return confirm('Yakin hapus booking ini?')">Hapus</button>
-                    </form>
-                        </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="10" class="text-center p-4">Belum ada data booking.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
+                    <td data-label="Aksi" class="action-cell">
+                        <button type="submit" class="btn btn-sm btn-primary action-btn save-btn">Simpan</button>
+                </form>
+
+                <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST" class="d-inline delete-form">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger action-btn delete-btn" onclick="return confirm('Yakin hapus booking ini?')">Hapus</button>
+                </form>
+                    </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="11" class="text-center p-4">Belum ada data booking.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
+
 </div>
 
 @endsection

@@ -11,13 +11,54 @@
 @section('title', 'Buat Booking')
 
 @section('content')
+
+<nav class="navbar">
+    <div class="navbar-container">
+        
+        {{-- Logo atau Nama Aplikasi --}}
+        <div class="navbar-logo">
+            🛠️ Ngawi Motor
+        </div>
+        
+        {{-- 2. Daftar Menu (UL) --}}
+        <ul class="navbar-menu">
+            <li><a href="{{ route('user.booking.create') }}" class="menu-link active">📝 Booking</a></li>
+            <li><a href="{{ route('user.riwayat') }}" class="menu-link">🛠️ Riwayat Servis</a></li>
+            <li><a href="{{ route('user.booking.utama') }}" class="menu-link">📋 Dashboard</a></li>
+            <li><a href="{{ route('user.tampilan_awal') }}" class="menu-link">🏠 Tampilan Awal</a></li>
+        </ul>
+
+        {{-- 3. Tombol Logout (Tetap di dalam Navbar-Container) --}}
+        <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
+            @csrf
+            {{-- Menggunakan class logout-btn yang sudah didefinisikan di CSS --}}
+            <button type="submit" class="logout-btn">
+                🚪 Logout
+            </button>
+        </form>
+    </div>
+</nav>
+
+
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card booking-card">
-                {{-- Form Booking --}}
-                <form action="{{ route('user.booking.store') }}" method="POST" id="bookingForm">
-                    @csrf
+          <div class="card booking-card">
+    @if (session('success'))
+        <div class="alert alert-success mt-3">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger mt-3">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    {{-- Form Booking --}}
+    <form action="{{ route('user.booking.store') }}" method="POST" id="bookingForm">
+        @csrf
                     
                     {{-- START: KODE BARU UNTUK MENAMPILKAN ERROR BATAS BOOKING --}}
                     @error('booking_limit')

@@ -18,6 +18,7 @@ class Booking extends Model
         'tanggal_booking',
         'status',
         'kendaraan',
+        'catatan_admin',
         'alamat'
     ];
 

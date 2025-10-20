@@ -75,8 +75,11 @@
     <button type="submit" class="btn btn-primary mt-2">Simpan</button>
 </form>
 
+@if (session('success'))
+    <div class="alert alert-success mt-3">
+        {{ session('success') }}
     </div>
-</div>
+@endif
 
 @endsection
 

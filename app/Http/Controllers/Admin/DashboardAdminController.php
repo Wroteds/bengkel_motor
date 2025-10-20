@@ -9,14 +9,12 @@ class DashboardAdminController extends Controller
 {
     public function index()
     {
-        $userId = Auth::id();
-
-        // Hitung data booking milik user login
-        $total_booking = Booking::where('user_id', $userId)->count();
-        $selesai = Booking::where('user_id', $userId)->where('status', 'Selesai')->count();
-        $pending = Booking::where('user_id', $userId)->where('status', 'Pending')->count();
-        $proses  = Booking::where('user_id', $userId)->where('status', 'Proses')->count();
-        $batal   = Booking::where('user_id', $userId)->where('status', 'Batal')->count();
+        // Hitung semua data booking (bukan hanya milik admin login)
+        $total_booking = Booking::count();
+        $selesai = Booking::where('status', 'Selesai')->count();
+        $pending = Booking::where('status', 'Pending')->count();
+        $proses  = Booking::where('status', 'Proses')->count();
+        $batal   = Booking::where('status', 'Batal')->count();
 
         return view('admin.bookings.dashboard', compact(
             'total_booking',

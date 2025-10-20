@@ -1,13 +1,20 @@
-/* Background umum */
+/* ====================================== */
+/* 🌈 DASHBOARD USER - DESAIN PROFESIONAL */
+/* ====================================== */
+
+/* Body umum */
 body {
     font-family: 'Poppins', sans-serif;
-    background: #f9f9f9;
+    background: #f7f8fa;
     margin: 0;
     padding: 0;
     color: #333;
+    overflow-x: hidden;
 }
 
-/* Tombol hamburger */
+/* =============================== */
+/* 🔹 TOMBOL HAMBURGER (MOBILE) */
+/* =============================== */
 .hamburger {
     position: fixed;
     top: 15px;
@@ -18,201 +25,177 @@ body {
     padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     z-index: 1100;
+    display: none;
 }
 
-/* Sidebar */
+/* =============================== */
+/* 🔸 SIDEBAR UTAMA */
+/* =============================== */
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: 0;
     width: 250px;
     height: 100%;
-    background: linear-gradient(180deg, #ff6b35, #ff2e00);
+    background: linear-gradient(180deg, #e53935, #000000);
     color: #fff;
-    transition: left 0.3s ease;
-    padding: 20px;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: left 0.3s ease, background 0.3s ease;
     z-index: 1000;
-}
-
-.sidebar.active {
-    left: 0;
 }
 
 /* Profil user */
 .user-profile {
     text-align: center;
-    margin-bottom: 25px;
+    padding: 25px 15px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
-.profile-img {
-    width: 80px;
-    height: 80px;
+.user-profile img {
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
+    border: 3px solid #fff;
     object-fit: cover;
     margin-bottom: 10px;
-    border: 3px solid #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .user-profile h3 {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0;
+    color: #fff;
+    letter-spacing: 0.3px;
 }
 
 /* Menu sidebar */
 .menu {
     list-style: none;
-    padding: 0;
+    padding: 0 20px;
     margin: 0;
+    flex: 1;
 }
 
 .menu li {
-    margin: 12px 0;
+    margin: 8px 0;
 }
 
 .menu-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     color: #fff;
     text-decoration: none;
     font-size: 15px;
-    display: block;
+    font-weight: 500;
     padding: 10px 15px;
-    border-radius: 8px;
-    transition: background 0.3s, padding-left 0.3s;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 .menu-link:hover {
-    background: rgba(255, 255, 255, 0.15);
-    padding-left: 20px;
+    background: rgba(255,255,255,0.15);
+    padding-left: 22px;
 }
 
-/* Menu aktif */
 .menu-link.active {
-    background: rgba(255, 255, 255, 0.25);
-    font-weight: bold;
+    background: rgba(255,255,255,0.25);
+    font-weight: 600;
 }
 
-/* Tombol logout */
+/* =============================== */
+/* 🔻 TOMBOL LOGOUT */
+/* =============================== */
 .logout-form {
-    margin-top: 25px;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    margin-top: 10px;
 }
 
 .logout-btn {
     width: 100%;
     background: #c62828;
-    border: none;
     color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
     font-size: 15px;
     cursor: pointer;
-    border-radius: 8px;
-    padding: 10px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
-    background: #a31212;
+    background: #b71c1c;
+    transform: scale(1.04);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* Konten utama */
+/* =============================== */
+/* 🧭 KONTEN UTAMA */
+/* =============================== */
 .content {
-    margin-left: 0;
-    padding: 20px;
-    transition: margin-left 0.3s;
-}
-
-.sidebar.active ~ .content {
-    margin-left: 250px;
-}
-
-
-/* Default: tombol hamburger disembunyikan */
-.hamburger {
-    display: none;
-}
-
-/* Muncul hanya saat layar kecil (max 768px) */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        background: #fff;
-        border: none;
-        font-size: 26px;
-        padding: 10px 15px;
-        border-radius: 8px;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        z-index: 1100;
-    }
-
-    /* Sidebar default tertutup di layar kecil */
-    .sidebar {
-        left: -250px;
-    }
-
-    .sidebar.active {
-        left: 0;
-    }
-
-    /* Konten bergeser saat sidebar aktif */
-    .sidebar.active ~ .content {
-        margin-left: 250px;
-    }
-}
-
-/* Di layar besar (desktop), sidebar selalu tampil */
-@media (min-width: 769px) {
-    .sidebar {
-        left: 0;
-    }
-
-    .content {
-        margin-left: 250px;
-    }
-}
-
-
-/* Konten utama */
-.content {
-    margin-left: 250px;
-    padding: 40px;
-    transition: margin-left 0.3s;
-}
-
-/* Box welcome */
-.welcome-box {
-    background: #fff;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
+    margin-left: 260px;
+    padding: 50px;
+    transition: margin-left 0.3s ease;
     animation: fadeInUp 0.6s ease;
 }
 
-.welcome-box h1 {
+.layanan-container h2 {
     font-size: 28px;
-    margin-bottom: 15px;
-    color: #ff4e00;
+    margin-bottom: 25px;
+    color: #2c3e50;
+    text-align: center;
+    font-weight: 600;
 }
 
-.welcome-box p {
-    font-size: 16px;
-    color: #555;
+.layanan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.layanan-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+}
+
+.layanan-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.layanan-card h4 {
+    color: #1a237e;
     margin-bottom: 10px;
 }
 
-.welcome-box .tagline {
-    font-style: italic;
-    font-weight: 500;
-    color: #222;
-    margin-top: 15px;
+.layanan-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
 }
 
-/* Animasi masuk */
+.harga {
+    color: #2e7d32;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* =============================== */
+/* ✨ ANIMASI */
+/* =============================== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -224,10 +207,34 @@ body {
     }
 }
 
-/* Responsif mobile */
+/* =============================== */
+/* 📱 RESPONSIVE DESIGN */
+/* =============================== */
 @media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .sidebar {
+        left: -250px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
     .content {
         margin-left: 0;
-        padding: 20px;
+        padding: 30px 20px;
+    }
+}
+
+@media (min-width: 769px) {
+    .sidebar {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 250px;
     }
 }

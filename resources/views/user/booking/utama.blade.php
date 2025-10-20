@@ -3,86 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Booking Anda</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- Memuat CSS riwayat.css (yang berisi styling navbar) --}}
-    <link rel="stylesheet" href="riwayat.css"> 
-    <link rel="stylesheet" href="{{ asset('css/riwayat.css') }}">
+    <title>Dashboard User</title>
 </head>
 <body>
+@extends('layouts.app') {{-- opsional kalau kamu pakai layout --}}
 
-{{-- NAVBAR BARU (Menggantikan Sidebar) --}}
-<nav class="navbar">
-    <div class="navbar-container">
-        {{-- Logo atau Nama Aplikasi --}}
-        <div class="navbar-logo">
-            🛠️ BengkelGO
+@section('content')
+<!-- Tombol hamburger untuk mobile -->
+<button class="hamburger" id="hamburger">&#9776;</button>
+
+  {{-- Sidebar --}}
+    <aside class="sidebar" id="sidebarMenu">
+        <div class="user-profile text-center">
+            {{-- Form upload foto profil --}}
+            <form id="photoForm" action="{{ route('user.updatePhoto') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <label for="profileInput">
+                    @if(Auth::user()->profile_foto)
+                        <img src="{{ asset('storage/' . Auth::user()->profile_foto) }}" 
+                             class="profile-img" 
+                             id="profilePreview"
+                             alt="Foto Profil">
+                    @else
+                        <img src="{{ asset('img/gear.png') }}" 
+                             class="profile-img" 
+                             id="profilePreview"
+                             alt="Default Foto">
+                    @endif
+                </label>
+                <input type="file" name="profile_foto" id="profileInput" class="d-none" accept="image/*" onchange="document.getElementById('photoForm').submit();">
+            </form>
+
+            <h3>{{ Auth::user()->name }}</h3>
         </div>
-        
-        {{-- Menu Navigasi --}}
-        <ul class="navbar-menu">
-            <li><a href="{{ route('user.tampilan_awal') }}" class="menu-link">🏠 Tampilan Awal</a></li>
-            <li><a href="{{ route('user.layanan') }}" class="menu-link">⚙️ Layanan</a></li>
-            <li><a href="{{ route('user.booking.create') }}" class="menu-link">📝 Booking</a></li>
-            {{-- Tambahkan class 'active' untuk halaman yang sedang aktif --}}
-            <li><a href="{{ route('user.riwayat') }}" class="menu-link active">🛠️ Riwayat Servis</a></li>
-        </ul>
 
-        {{-- Logout Button --}}
-        <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-            @csrf
-            <button type="submit" class="logout-btn navbar-link" style="
-                background: none; 
-                border: 2px solid #fff; 
-                color: #fff; 
-                padding: 8px 15px; 
-                border-radius: 20px; 
-                cursor: pointer; 
-                font-weight: 500;
-                transition: 0.3s;">
-                🚪 Logout
-            </button>
-        </form>
+
+
+    <ul class="menu">
+        <li><a href="{{ route('user.riwayat') }}" class="menu-link"><i class="fa-solid fa-screwdriver-wrench"></i>📝 Riwayat Servis</a></li>
+        <li><a href="{{ route('user.booking.create') }}" class="menu-link"><i class="fa-regular fa-file-lines"></i>🛠️ Booking</a></li>
+        <li><a href="{{ route('user.dashboard') }}" class="menu-link active"><i class="fa-solid fa-chart-line"></i>📋 Dashboard</a></li>
+        <li><a href="{{ route('user.tampilan_awal') }}" class="menu-link"><i class="fa-solid fa-house"></i>🏠 Tampilan Awal</a></li>
+    </ul>
+
+    <form method="POST" action="{{ route('logout') }}" class="logout-form">
+        @csrf
+        <button type="submit" class="logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </button>
+    </form>
+</aside>
+
+<!-- Konten Utama -->
+<main class="content">
+    <div class="layanan-container">
+        <h2>Daftar Layanan Bengkel</h2>
+        <div class="layanan-grid">
+            <div class="layanan-card">
+                <h4>Servis Ringan</h4>
+                <p>Pengecekan busi, rantai, oli, dan rem motor.</p>
+                <span class="harga">Rp 100.000</span>
+            </div>
+            <div class="layanan-card">
+                <h4>Servis Besar</h4>
+                <p>Pembersihan karburator, klep, piston, dan tune up mesin.</p>
+                <span class="harga">Rp 250.000</span>
+            </div>
+            <div class="layanan-card">
+                <h4>Ganti Oli</h4>
+                <p>Oli mesin + jasa ganti.</p>
+                <span class="harga">Rp 55.000</span>
+            </div>
+            <div class="layanan-card">
+                <h4>Ganti Ban</h4>
+                <p>Ban luar & dalam (harga sesuai ukuran).</p>
+                <span class="harga">Rp 150.000</span>
+            </div>
+        </div>
     </div>
-</nav>
+</main>
 
-{{-- KONTEN UTAMA (Riwayat Booking) --}}
-<div class="riwayat-container">
-    <h2>Riwayat Booking Anda</h2>
+<!-- JavaScript Sidebar -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.querySelector('.sidebar');
 
-    <table class="table" style="width: 100%; border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th>Jenis Servis</th>
-                <th>Tanggal</th>
-                <th>Waktu Selesai</th>
-                <th>Status</th>
-                <th>Catatan</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>ganti mesin</td>
-                <td>24 Oct 2025</td>
-                <td>-</td>
-                <td style="text-align: center;">
-                    <span class="status-badge pending">Menunggu</span>
-                </td>
-                <td>asfasf</td>
-            </tr>
-            <tr>
-                <td>ganti mesin</td>
-                <td>15 Oct 2025</td>
-                <td>10 Oct 2025<br>11:07</td>
-                <td style="text-align: center;">
-                    <span class="status-badge" style="background: orange; color: #fff;">Proses</span>
-                </td>
-                <td>sdfsdf</td>
-            </tr>
-            {{-- Tambahkan baris lain di sini --}}
-        </tbody>
-    </table>
-</div>
+    if (hamburger && sidebar) {
+        hamburger.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+        });
+    }
+});
+</script>
 
+@endsection
+
+
+{{-- Tambahkan CSS khusus halaman ini --}}
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+@endpush
+
+{{-- Tambahkan JS khusus halaman ini --}}
+@push('scripts')
+<script src="{{ asset('js/user.js') }}"></script>
+@endpush
 </body>
 </html>

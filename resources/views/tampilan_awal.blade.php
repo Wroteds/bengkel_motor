@@ -124,9 +124,7 @@
     <!-- contact -->
     <section id="contact" class="contact">
       <h2 data-aos="fade-down">Alamat</h2>
-      <p data-aos="fade-up" data-aos-delay="200">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, provident.
-      </p>
+
       
       
      <div class="clock" data-aos="zoom-in" data-aos-delay="400">

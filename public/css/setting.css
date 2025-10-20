@@ -1,12 +1,12 @@
 /* --- Global Variables (Tambahkan ini di bagian atas) --- */
 :root {
-    --primary-color: #4f46e5; /* Indigo */
+    --primary-color: #e54646; /* Indigo */
     --secondary-bg: #f3f4f6; /* Gray-100 for background */
-    --navbar-bg: #1f2937; /* Dark Gray/Slate */
+    --navbar-bg: #343a40 ;
     --text-light: #f3f4f6;
     --text-dark: #1f2937;
     --batal-color: #dc2626; /* Red for Cancel/Logout */
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 /* --- Global --- */

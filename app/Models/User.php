@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use PhpParser\Node\Stmt\Return_;
 
 class User extends Authenticatable
 {
@@ -52,5 +53,10 @@ class User extends Authenticatable
     public function riwayatServis()
     {
         return $this->hasMany(RiwayatServis::class, 'user_id');
+    }
+
+    public function bookings()
+    {
+      return $this->hasMany(Booking::class);
     }
 }

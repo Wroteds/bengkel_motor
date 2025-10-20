@@ -43,10 +43,10 @@ Route::view('/views/layanan', 'user.layanan')->name('user.layanan');
 // --- Rute ADMIN ---
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
-
+    
     // Booking
     Route::get('/bookings', [BookingAdminController::class, 'index'])->name('bookings.index');
-    Route::put('/bookings/{booking}/update-status', [BookingAdminController::class, 'updateStatus'])->name('bookings.updateStatus');
+    Route::put('/bookings/{id}/update-status', [BookingController::class, 'updateStatus'])->name('bookings.updateStatus');
     Route::delete('/bookings/{booking}', [BookingAdminController::class, 'destroy'])->name('bookings.destroy');
 
     // Kelola User
@@ -56,18 +56,19 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     // Setting
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.pengaturan');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
- 
 });
 
+
 // --- Rute USER ---
-Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {
+    Route::middleware(['auth', 'role:user'])->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'userDashboard'])->name('dashboard');
     
     // Kelola Booking
     Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
     Route::get('/booking/create', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
-
+    Route::get('/booking/utama', [BookingController::class, 'utama'])->name('booking.utama');
+   
     // Riwayat
     Route::get('/riwayat', [BookingController::class, 'riwayat'])->name('riwayat');
 
