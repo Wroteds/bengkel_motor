@@ -60,8 +60,7 @@
         <h1></h1>
         <h1></h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae,
-          non?
+          Solusi Lengkap Untuk Memperbaiki Motor Anda
         </p>
       </main>
     </section>
@@ -75,27 +74,22 @@
         <div class="layanan-card">
           <img src="{{ asset('img/WhatsApp Image 2025-07-17 at 13.31.03_cbc95bf7.jpg') }}" alt="Servis Cvt" class="layanan-card-img"/>
           <h3 class="layanan-card-title">Servis Cvt</h3>
-          <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
           <img src="{{ asset('img/WhatsApp Image 2025-07-17 at 14.44.22_cd48b40e.jpg') }}"alt="Penggantian Oli" class="layanan-card-img"/>
           <h3 class="layanan-card-title">Penggantian Oli</h3>
-          <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
           <img src="{{ asset('img/WhatsApp Image 2025-07-17 at 13.31.02_a699e516.jpg') }}" alt="Servis Besar" class="layanan-card-img"/>
           <h3 class="layanan-card-title">Servis Besar</h3>
-          <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
           <img src="{{ asset('img/WhatsApp Image 2025-08-06 at 13.34.29_6ff848e7.jpg') }}" alt="Kelistrikan" class="layanan-card-img" />
           <h3 class="layanan-card-title">Kelistrikan</h3>
-          <p class="layanan-card-price">IDR 50K</p>
         </div>
         <div class="layanan-card">
           <img src="{{ asset('img/WhatsApp Image 2025-08-06 at 13.34.29_648db57d.jpg') }}" alt="Repaint" class="layanan-card-img" />
           <h3 class="layanan-card-title">Repaint</h3>
-          <p class="layanan-card-price">IDR 50K</p>
         </div>
       </div>
     </section>

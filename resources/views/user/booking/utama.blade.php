@@ -56,31 +56,99 @@
 
 <!-- Konten Utama -->
 <main class="content">
-    <div class="layanan-container">
-        <h2>Daftar Layanan Bengkel</h2>
-        <div class="layanan-grid">
+<div class="layanan-container">
+    <h2>Daftar Layanan Bengkel</h2>
+
+    <div class="layanan-slider">
+        <div class="layanan-track">
             <div class="layanan-card">
+                <img src="{{ asset('img/oli.png') }}" alt="Servis Ringan" class="layanan-img">
+                <div class="layanan-info">
                 <h4>Servis Ringan</h4>
                 <p>Pengecekan busi, rantai, oli, dan rem motor.</p>
                 <span class="harga">Rp 100.000</span>
             </div>
+        </div>
+
             <div class="layanan-card">
+                <img src="{{ asset('img/servis-berat.png') }}" alt="Servis Besar" class="layanan-img">
+                <div class="layanan-info">
                 <h4>Servis Besar</h4>
                 <p>Pembersihan karburator, klep, piston, dan tune up mesin.</p>
                 <span class="harga">Rp 250.000</span>
             </div>
+            </div>
+
             <div class="layanan-card">
+                <img src="{{ asset('img/rak oli.png') }}" alt="Ganti Oli" class="layanan-img">
+                 <div class="layanan-info">
                 <h4>Ganti Oli</h4>
                 <p>Oli mesin + jasa ganti.</p>
                 <span class="harga">Rp 55.000</span>
             </div>
+            </div>
+
             <div class="layanan-card">
+                <img src="{{ asset('img/rak ban.png') }}" alt="Ganti Ban" class="layanan-img">
+                 <div class="layanan-info">
                 <h4>Ganti Ban</h4>
                 <p>Ban luar & dalam (harga sesuai ukuran).</p>
                 <span class="harga">Rp 150.000</span>
             </div>
+            </div>
+
+            <div class="layanan-card">
+                <img src="{{ asset('img/cat-motor.png') }}" alt="Cuci Motor" class="layanan-img">
+                 <div class="layanan-info">
+                <h4>Cat Body Motor</h4>
+                <p>Terjamin Akan Bagus Untuk Hasilnya</p>
+                <span class="harga">Rp 30.000</span>
+            </div>
+            </div>
+
+            <div class="layanan-card">
+                <img src="{{ asset('img/listrik.png') }}" alt="Ganti Aki" class="layanan-img">
+                <div class="layanan-info">
+                <h4>Kelistrikan</h4>
+                <p>Memperbaiki Masalah Kelistrikan Pada Sepeda Motor</p>
+                <span class="harga">Rp 200.000</span>
+            </div>
+         </div>
+
+            <div class="layanan-card">
+                <img src="{{ asset('img/servis-rem.png') }}" alt="Servis Rem" class="layanan-img">
+                <div class="layanan-info">
+                <h4>Servis Rem</h4>
+                <p>Pengecekan dan servis rem depan & belakang.</p>
+                <span class="harga">Rp 80.000</span>
+            </div>
+        </div>
+
+            <div class="layanan-card">
+                <img src="{{ asset('img/ganti-lampu.png') }}" alt="Ganti Lampu" class="layanan-img">
+                 <div class="layanan-info">
+                <h4>Ganti Lampu</h4>
+                <p>Ganti lampu utama atau lampu sein.</p>
+                <span class="harga">Rp 45.000</span>
+            </div>
+        </div>
+
+            <div class="layanan-card">
+                <img src="{{ asset('img/rantai.png') }}" alt="Servis Shockbreaker" class="layanan-img">
+                <div class="layanan-info">
+                <h4>Servis Rantai</h4>
+                <p>perbaikan Rantai</p>
+                <span class="harga">Rp 10.000</span>
+            </div>
+            </div>
         </div>
     </div>
+
+    <div class="slider-buttons">
+        <button id="prevBtn" class="slider-btn">⬅</button>
+        <button id="nextBtn" class="slider-btn">➡</button>
+    </div>
+</div>
 </main>
 
 <!-- JavaScript Sidebar -->
