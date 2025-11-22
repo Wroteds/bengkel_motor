@@ -15,12 +15,15 @@ class BookingController extends Controller
      */
     public function riwayat()
     {
-        $bookings = Booking::where('user_id', Auth::id())->latest()->get();
+        $bookings = Booking::where('user_id', Auth::id())
+            ->latest()
+            ->get();
+
         return view('user.booking.riwayat', compact('bookings'));
     }
 
     /**
-     * 🔹 Halaman utama booking
+     * 🔹 Halaman utama dashboard booking user
      */
     public function utama()
     {
@@ -28,12 +31,11 @@ class BookingController extends Controller
     }
 
     /**
-     * 🔹 Halaman form buat booking baru
+     * 🔹 Form buat booking baru
      */
     public function create()
     {
-        $bookings = Booking::where('user_id', Auth::id())->latest()->get();
-        return view('user.booking.buat', compact('bookings'));
+        return view('user.booking.buat');
     }
 
     /**
@@ -42,44 +44,52 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'jenis_servis' => 'required|string|max:255',
-            'tanggal_booking' => 'required|date|after_or_equal:today',
-            'catatan' => 'nullable|string',
-            'kendaraan' => 'required|string|max:255',
-            'alamat' => 'required|string',
+            'jenis_servis'      => 'required|string|max:255',
+            'tanggal_booking'   => 'required|date|after_or_equal:today',
+            'catatan'           => 'nullable|string',
+            'kendaraan'         => 'required|string|max:255',
+            'alamat'            => 'nullable|string|max:255',
         ]);
 
-        // ✅ Ambil batas booking dari tabel settings
+        /**
+         * =============================
+         *  🔥 BATAS BOOKING PER MINGGU
+         * =============================
+         */
         $setting = Setting::where('key', 'max_booking')->first();
-        $maxBookingsPerWeek = $setting ? (int) $setting->value : 3; // default 3
+        $maxBookingsPerWeek = $setting ? (int) $setting->value : 3;
 
-        // ✅ Hitung booking user dalam 7 hari terakhir
         $sevenDaysAgo = Carbon::now()->subDays(7);
+
         $userBookingsThisWeek = Booking::where('user_id', Auth::id())
             ->where('created_at', '>=', $sevenDaysAgo)
             ->where('status', '!=', 'batal')
             ->count();
 
-        // ✅ Cek batas booking
         if ($userBookingsThisWeek >= $maxBookingsPerWeek) {
-            return redirect()->back()->with(
-                'booking_limit_popup',
-                "Maaf, batas booking Anda adalah {$maxBookingsPerWeek} kali per 7 hari. Anda sudah mencapai batas."
-            );
+            return redirect()
+                ->back()
+                ->with('booking_limit_popup', "Batas booking Anda adalah {$maxBookingsPerWeek} kali per 7 hari.");
         }
 
-        // ✅ Simpan booking baru
+        /**
+         * =============================
+         * 🔥 SIMPAN BOOKING BARU
+         * =============================
+         */
         Booking::create([
-            'user_id' => Auth::id(),
-            'jenis_servis' => $request->jenis_servis,
-            'kendaraan' => $request->kendaraan,
-            'alamat' => $request->alamat,
-            'catatan' => $request->catatan,
+            'user_id'         => Auth::id(),
+            'jenis_servis'    => $request->jenis_servis,
+            'kendaraan'       => $request->kendaraan,
+            'alamat'          => $request->alamat,
+            'catatan'         => $request->catatan,
             'tanggal_booking' => $request->tanggal_booking,
-            'status' => 'menunggu',
+            'status'          => 'menunggu',  // default
         ]);
 
-        return redirect()->route('user.riwayat')->with('success_popup', 'Booking berhasil dibuat!');
+        return redirect()
+            ->route('user.riwayat')
+            ->with('success_popup', 'Booking berhasil dibuat!');
     }
 
     /**
@@ -94,6 +104,8 @@ class BookingController extends Controller
         $booking->catatan_admin = $request->input('catatan_admin');
         $booking->save();
 
-        return redirect()->back()->with('success', 'Status & catatan admin berhasil diperbarui.');
+        return redirect()
+            ->back()
+            ->with('success', 'Status dan catatan admin berhasil diperbarui.');
     }
 }

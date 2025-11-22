@@ -1,47 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // HAMBURGER TOGGLE 
+
     const hamburgerBtn = document.getElementById("hamburgerBtn");
     const sidebarMenu = document.getElementById("sidebarMenu");
 
+    // HAMBURGER SYSTEM
     if (hamburgerBtn && sidebarMenu) {
+
         hamburgerBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             sidebarMenu.classList.toggle("active");
 
-            hamburgerBtn.innerHTML = sidebarMenu.classList.contains("active")
-                ? "&times;"
-                : "&#9776;";
+            hamburgerBtn.style.display =
+                sidebarMenu.classList.contains("active") ? "none" : "block";
         });
 
         document.querySelectorAll(".menu-link").forEach(link => {
-            link.addEventListener("click", function () {
+            link.addEventListener("click", () => {
                 sidebarMenu.classList.remove("active");
-                hamburgerBtn.innerHTML = "&#9776;";
+                hamburgerBtn.style.display = "block";
             });
         });
 
         document.addEventListener("click", function (e) {
-            if (!sidebarMenu.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+            if (!sidebarMenu.contains(e.target)) {
                 sidebarMenu.classList.remove("active");
-                hamburgerBtn.innerHTML = "&#9776;";
+                hamburgerBtn.style.display = "block";
             }
         });
     }
 
-    // SLIDER LAYANAN 
+    // SLIDER
     const track = document.querySelector(".layanan-track");
     const nextBtn = document.getElementById("nextBtn");
     const prevBtn = document.getElementById("prevBtn");
 
     if (track && nextBtn && prevBtn) {
-        const scrollAmount = track.offsetWidth - 50;
 
         nextBtn.addEventListener("click", () => {
-            track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            track.scrollBy({ left: 300, behavior: "smooth" });
         });
 
         prevBtn.addEventListener("click", () => {
-            track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            track.scrollBy({ left: -300, behavior: "smooth" });
         });
     }
 });

@@ -146,14 +146,6 @@
         <a href="#"><i data-feather="instagram"></i></a>
          <a href="#"><i data-feather="facebook"></i></a>
       </div>
-      
-
-      <div class="link">
-        <a href="#home">home</a>
-        <a href="#layanan">Layanan</a>
-        <a href="#about">Tentang Kami</a>
-        <a href="#contact">Alamat</a>
-      </div>
 
       <div class="credit">
         <p>Created by <a href="">Vandy&Daim</a>
