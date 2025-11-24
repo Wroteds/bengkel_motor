@@ -12,9 +12,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/riwayat.css') }}">
 
-{{-- ======================== --}}
-{{--        NAVBAR           --}}
-{{-- ======================== --}}
+<!-- Navbar -->
 <nav class="navbar">
     <div class="navbar-container">
 
@@ -33,9 +31,7 @@
     </div>
 </nav>
 
-{{-- ======================== --}}
-{{--       MAIN CONTENT       --}}
-{{-- ======================== --}}
+<!-- Main Content -->
 <div class="main-content">
 
     <div class="riwayat-container">
@@ -106,9 +102,7 @@
 
 </div>
 
-{{-- ======================== --}}
-{{--     MOBILE BOTTOM NAV    --}}
-{{-- ======================== --}}
+<!-- tombol di hp -->
 <div class="mobile-nav">
     <a href="{{ route('user.booking.create') }}" class="mobile-item">
         📝
