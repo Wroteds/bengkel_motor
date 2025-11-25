@@ -104,11 +104,7 @@
         <div class="content" data-aos="fade-up"
          data-aos-anchor-placement="center-bottom">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-            nulla sunt eligendi consectetur nam minima, quibusdam harum. Magni a
-            maxime voluptatem, eos sequi hic unde, nostrum animi aperiam
-            molestias quo! Lorem ipsum dolor sit, amet consectetur adipisicing
-            elit. Iste, dolor.
+            BENGKEL NGAWI MOTOR III Adalah Bengkel yang didirikan oleh Zainul Arifin pada tahun 2006 di Kecamatan Rajeg Kabupaten Tangerang,
           </p>
         </div>
       </div>
@@ -124,9 +120,8 @@
      <div class="clock" data-aos="zoom-in" data-aos-delay="400">
     <h3>Jam Operasional</h3>
     <ul>
-        <li><span>Senin - Jumat</span> <span>08.00 - 17.00</span></li>
-        <li><span>Sabtu</span> <span>08.00 - 14.00</span></li>
-        <li><span>Minggu</span> <span>Tutup</span></li>
+        <li><span>Senin - Minggu</span> <span>08.00 - 17.00</span></li>
+        <li><span>Hari-hari tertentu</span> <span>Tutup</span></li>
       </ul>
     </div>
 
@@ -143,8 +138,7 @@
     <!-- footer -->
      <footer>
       <div class="sosial">
-        <a href="#"><i data-feather="instagram"></i></a>
-         <a href="#"><i data-feather="facebook"></i></a>
+        
       </div>
 
       <div class="credit">
